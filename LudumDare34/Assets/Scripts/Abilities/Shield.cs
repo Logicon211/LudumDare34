@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerUps : MonoBehaviour {
+public class Shield : MonoBehaviour {
 	
 	public int abilityId = 1;
 	Ship ship;
