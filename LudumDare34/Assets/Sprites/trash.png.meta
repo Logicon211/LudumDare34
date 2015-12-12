@@ -1,0 +1,397 @@
+fileFormatVersion: 2
+guid: bf0e82a79f3409a4198bdb96b2baa02d
+timeCreated: 1449959074
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: trash_0
+    21300002: trash_1
+    21300004: trash_2
+    21300006: trash_3
+    21300008: trash_4
+    21300010: trash_5
+    21300012: trash_6
+    21300014: trash_7
+    21300016: trash_8
+    21300018: trash_9
+    21300020: trash_10
+    21300022: trash_11
+    21300024: trash_12
+    21300026: trash_13
+    21300028: trash_14
+    21300030: trash_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: trash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 48}
+        - {x: -38, y: 42}
+        - {x: -56, y: -3}
+        - {x: -56, y: -47}
+        - {x: -52, y: -62}
+        - {x: 54, y: -62}
+        - {x: 55, y: -59}
+        - {x: 55, y: 20}
+        - {x: 21, y: 48}
+    - name: trash_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 51}
+        - {x: -26, y: 51}
+        - {x: -61, y: 13}
+        - {x: -61, y: -53}
+        - {x: -7, y: -64}
+        - {x: 51, y: -64}
+        - {x: 51, y: 18}
+        - {x: 43, y: 47}
+    - name: trash_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 53}
+        - {x: -64, y: 11}
+        - {x: -64, y: -46}
+        - {x: -8, y: -64}
+        - {x: 41, y: -64}
+        - {x: 47, y: -57}
+        - {x: 47, y: 22}
+        - {x: 33, y: 53}
+    - name: trash_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34, y: 62}
+        - {x: -34, y: 62}
+        - {x: -45, y: 57}
+        - {x: -61, y: 21}
+        - {x: -61, y: -18}
+        - {x: 9, y: -62}
+        - {x: 25, y: -62}
+        - {x: 47, y: -40}
+        - {x: 53, y: -23}
+        - {x: 53, y: 42}
+    - name: trash_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47, y: 48}
+        - {x: -59, y: 48}
+        - {x: -59, y: 9}
+        - {x: -36, y: -62}
+        - {x: 16, y: -62}
+        - {x: 29, y: -56}
+        - {x: 48, y: -30}
+        - {x: 55, y: -9}
+        - {x: 55, y: 46}
+    - name: trash_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 56}
+        - {x: -43, y: 56}
+        - {x: -46, y: 53}
+        - {x: -46, y: -26}
+        - {x: -43, y: -55}
+        - {x: 30, y: -55}
+        - {x: 64, y: -17}
+        - {x: 64, y: 29}
+        - {x: 59, y: 32}
+      - - {x: -56, y: -47}
+        - {x: -55, y: -50}
+        - {x: -52, y: -50}
+        - {x: -50, y: -48}
+        - {x: -51, y: -45}
+        - {x: -54, y: -45}
+    - name: trash_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 61}
+        - {x: -59, y: -8}
+        - {x: -59, y: -30}
+        - {x: -50, y: -43}
+        - {x: -37, y: -53}
+        - {x: 22, y: -53}
+        - {x: 63, y: -34}
+        - {x: 63, y: 14}
+        - {x: 19, y: 61}
+    - name: trash_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38, y: 59}
+        - {x: 10, y: 59}
+        - {x: -61, y: 26}
+        - {x: -61, y: -45}
+        - {x: -26, y: -56}
+        - {x: 54, y: -56}
+        - {x: 54, y: -2}
+        - {x: 48, y: 32}
+    - name: trash_8
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53, y: 51}
+        - {x: -53, y: -33}
+        - {x: -25, y: -60}
+        - {x: 35, y: -60}
+        - {x: 58, y: -25}
+        - {x: 58, y: 48}
+        - {x: 56, y: 51}
+    - name: trash_9
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 64}
+        - {x: -53, y: 36}
+        - {x: -53, y: -33}
+        - {x: -32, y: -60}
+        - {x: 25, y: -60}
+        - {x: 61, y: -14}
+        - {x: 61, y: 37}
+        - {x: 7, y: 64}
+    - name: trash_10
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 63}
+        - {x: -55, y: 54}
+        - {x: -56, y: 47}
+        - {x: -56, y: -56}
+        - {x: 46, y: -56}
+        - {x: 60, y: -33}
+        - {x: 60, y: -4}
+        - {x: 10, y: 63}
+    - name: trash_11
+      rect:
+        serializedVersion: 2
+        x: 3300
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 54}
+        - {x: -63, y: 5}
+        - {x: -63, y: -34}
+        - {x: -57, y: -40}
+        - {x: -51, y: -40}
+        - {x: -16, y: -57}
+        - {x: 38, y: -57}
+        - {x: 50, y: -52}
+        - {x: 50, y: 13}
+        - {x: 44, y: 42}
+        - {x: 37, y: 54}
+    - name: trash_12
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: 49}
+        - {x: -64, y: 32}
+        - {x: -64, y: -11}
+        - {x: -11, y: -64}
+        - {x: 29, y: -64}
+        - {x: 58, y: -3}
+        - {x: 58, y: 36}
+        - {x: 39, y: 49}
+    - name: trash_13
+      rect:
+        serializedVersion: 2
+        x: 3900
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 52}
+        - {x: -25, y: 52}
+        - {x: -56, y: 42}
+        - {x: -61, y: 30}
+        - {x: -61, y: -43}
+        - {x: -28, y: -64}
+        - {x: 12, y: -64}
+        - {x: 61, y: -8}
+        - {x: 61, y: 11}
+        - {x: 45, y: 41}
+    - name: trash_14
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 56}
+        - {x: -47, y: 41}
+        - {x: -50, y: 20}
+        - {x: -50, y: -40}
+        - {x: -36, y: -59}
+        - {x: -8, y: -59}
+        - {x: 61, y: -33}
+        - {x: 61, y: 14}
+        - {x: 15, y: 56}
+    - name: trash_15
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 51}
+        - {x: -46, y: 51}
+        - {x: -52, y: 49}
+        - {x: -53, y: 39}
+        - {x: -53, y: -57}
+        - {x: -44, y: -62}
+        - {x: 10, y: -62}
+        - {x: 50, y: -59}
+        - {x: 58, y: -46}
+        - {x: 58, y: 4}
+        - {x: 55, y: 24}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
