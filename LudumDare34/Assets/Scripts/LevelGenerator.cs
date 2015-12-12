@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LevelGenerator : MonoBehaviour {
 
+	public GameObject[] terrainPieces;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +12,11 @@ public class LevelGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//
+	}
+
+	//Fixed Update called at a steady rate
+	void FixedUpdate () {
+
 	}
 }
