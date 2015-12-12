@@ -33,7 +33,7 @@ public class LevelGenerator : MonoBehaviour {
 		time += Time.deltaTime;
 		if (time >= 1f) {
 			//generate something
-			GameObject terrainPiece = Instantiate(terrainPieces[Random.Range(0, terrainPieces.Length)], new Vector3(Random.Range(minX, maxX),ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
+			GameObject terrainPiece = Instantiate(terrainPieces[Random.Range(0, terrainPieces.Length)], new Vector3(Random.Range(minX, maxX),ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
 			terrainPiece.transform.parent = transform;
 
 			terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
@@ -54,8 +54,8 @@ public class LevelGenerator : MonoBehaviour {
 
 	void SpawnWalls ()
 	{
-		GameObject leftWall = Instantiate (wallPiece, new Vector3 (minX, ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
-		GameObject rightWall = Instantiate (wallPiece, new Vector3 (maxX, ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
+		GameObject leftWall = Instantiate (wallPiece, new Vector3 (minX, ySpawnOffset, transform.position.z +1), transform.rotation) as GameObject;
+		GameObject rightWall = Instantiate (wallPiece, new Vector3 (maxX, ySpawnOffset, transform.position.z + 1), transform.rotation) as GameObject;
 		leftWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		rightWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 
