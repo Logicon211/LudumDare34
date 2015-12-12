@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TerrainScript : MonoBehaviour {
+public class WallScript : MonoBehaviour {
 
 	//Using the timer to destroy this object after a certain amount of time so that we don't have a buildup
 	private float timer;
@@ -14,7 +14,7 @@ public class TerrainScript : MonoBehaviour {
 		timer = 0f;
 		beginningYPosition = transform.position.y;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		//destroy object after it travels far enough
@@ -24,14 +24,6 @@ public class TerrainScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		//Check for player collision, blow him up and he loses or whatever
-
-		/*Debug.Log(col.gameObject);
-		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
-		if(damagable != null) {
-			GetComponent<AudioSource>().Play();
-			damagable.Damage(damageAmount);
-			player.ChangeHeat(-10);
-		}*/
+		//Wall will not kill the player
 	}
 }
