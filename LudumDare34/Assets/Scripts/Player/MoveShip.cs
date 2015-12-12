@@ -6,6 +6,7 @@ using System.Collections;
 public class MoveShip : MonoBehaviour {
 
 	public float currentSpeed = 5;
+	public float currentGarbage = 1;
 	Ship ship;
 
 
@@ -19,21 +20,25 @@ public class MoveShip : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
 			moveLeft();
-		if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+		else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
 			moveRight();
-		if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
+		else if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
 			useAbility();
+		else {
+			transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , 0);
+
+		}
 	}
 
 
 	public void moveLeft() 
-	{
-		transform.GetComponent<Rigidbody2D>().velocity = new Vector2(currentSpeed , 0);
+	{	
+		transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-currentSpeed , 0);
 	}
 
 	public void moveRight()
 	{
-		transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-currentSpeed , 0);
+		transform.GetComponent<Rigidbody2D>().velocity = new Vector2(currentSpeed , 0);
 	}
 
 	public void useAbility()

@@ -30,6 +30,11 @@ public class Ship : MonoBehaviour {
 		Debug.Log(id);
 	}
 
+	public void setShield()
+	{
+		isShielded = true;
+	}
+
 	public void takeHit()
 	{
 		if (isShielded == false)
