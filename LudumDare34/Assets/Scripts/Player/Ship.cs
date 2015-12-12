@@ -8,7 +8,8 @@ public class Ship : MonoBehaviour {
 	const int DEFAULT_ID = 0;
 	public int currentAbility = 0;
 	public int ammo = 0;
-    bool isShielded = false;
+    public bool isShielded = false;
+	bool isInvincible = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,6 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	public int getAbility()
@@ -46,13 +46,25 @@ public class Ship : MonoBehaviour {
 		isShielded = true;
 	}
 
+	public void setInvincible()
+	{
+		isInvincible = true;
+	}
+
 	public void takeHit()
 	{
-		if (isShielded == false)
+		if(isInvincible)
+		{
+			Debug.Log("Invincible");
+		}
+		else if (isShielded)
 		{
 			Debug.Log("talk shit get hit");
+			isShielded = false;
 			//DONT LET THIS GO THROUGH YET
 			//IF THIS STAYS ITS MITCH'S FAULT HE TOLD ME
+		}
+		else{
 			Destroy(gameObject);
 		}
 	}

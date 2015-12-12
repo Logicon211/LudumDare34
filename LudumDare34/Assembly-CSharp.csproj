@@ -77,8 +77,10 @@
      <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_StartGame.cs" />
      <Compile Include="Assets\INTRO\IntroSpriteFlow.cs" />
      <Compile Include="Assets\INTRO\Score_Script.cs" />
+     <Compile Include="Assets\Scripts\Abilities\Invincible.cs" />
      <Compile Include="Assets\Scripts\Abilities\Lasers.cs" />
      <Compile Include="Assets\Scripts\Abilities\Shield.cs" />
+     <Compile Include="Assets\Scripts\IDestroyable.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\Player\MoveShip.cs" />
      <Compile Include="Assets\Scripts\Player\Ship.cs" />
@@ -105,17 +107,11 @@
      <None Include="Assets\Example Games\Hat Trick - The Catch Game\Fonts\LuckiestGuy\LICENSE.txt" />
      <None Include="Assets\Example Games\2D Scrolling Shooter\_ReadMe.txt" />
      <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

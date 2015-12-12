@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TerrainScript : MonoBehaviour {
+public class TerrainScript : MonoBehaviour, IDestroyable<GameObject> {
 
 	//Using the timer to destroy this object after a certain amount of time so that we don't have a buildup
 	private float beginningYPosition;
@@ -29,6 +29,8 @@ public class TerrainScript : MonoBehaviour {
 		{
 			ship = col.gameObject.GetComponent<Ship>();
 			ship.takeHit();
+			kill(gameObject);
+
 		}
 		/*Debug.Log(col.gameObject);
 		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
@@ -37,5 +39,10 @@ public class TerrainScript : MonoBehaviour {
 			damagable.Damage(damageAmount);
 			player.ChangeHeat(-10);
 		}*/
+	}
+
+	public void kill(GameObject killObject)
+	{
+		Destroy(killObject);
 	}
 }
