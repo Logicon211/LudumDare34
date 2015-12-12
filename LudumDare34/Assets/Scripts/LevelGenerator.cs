@@ -67,4 +67,10 @@ public class LevelGenerator : MonoBehaviour {
 
 		lastWallSpawned = rightWall;
 	}
+
+	void UpdateSpeed() {
+		foreach (GameObject terrainPiece in terrainList) {
+			terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		}
+	}
 }
