@@ -4,7 +4,6 @@ using System.Collections;
 public class TerrainScript : MonoBehaviour {
 
 	//Using the timer to destroy this object after a certain amount of time so that we don't have a buildup
-	private float timer;
 	private float beginningYPosition;
 	Ship ship;
 
@@ -12,7 +11,6 @@ public class TerrainScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//When spawned set velocity down at the same speed as all other terrain objects
-		timer = 0f;
 		beginningYPosition = transform.position.y;
 	}
 	
