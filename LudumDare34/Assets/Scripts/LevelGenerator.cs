@@ -86,7 +86,7 @@ public class LevelGenerator : MonoBehaviour {
 	void FixedUpdate () {
 
 		//Generate the background
-		if (lastBackgroundSpawned.transform.position.y <= ySpawnOffset - 7.5) {
+		if (lastBackgroundSpawned.transform.position.y <= ySpawnOffset - 7.0) {
 			SpawnBackground();
 		}
 
