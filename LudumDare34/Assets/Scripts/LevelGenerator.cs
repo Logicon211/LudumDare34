@@ -11,10 +11,10 @@ public class LevelGenerator : MonoBehaviour {
 	public float maxX = 30;
 	public float ySpawnOffset = 10;
 
-	public float playerSpeed = 10;
+	public float playerSpeed = 5;
 
 	private float time;
-	private Vector2 lastSpawnPosition;
+	private GameObject lastBlockSpawned;
 	private GameObject lastWallSpawned;
 
 	public List<GameObject> terrainList;
@@ -25,30 +25,25 @@ public class LevelGenerator : MonoBehaviour {
 		ySpawnOffset = ySpawnOffset + transform.position.y;
 		terrainList = new List<GameObject> ();
 
+		SpawnBlocks();
 		SpawnWalls();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		time += Time.deltaTime;
-		if (time >= 1f) {
-			//generate something
-			GameObject terrainPiece = Instantiate(terrainPieces[Random.Range(0, terrainPieces.Length)], new Vector3(Random.Range(minX, maxX),ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
-			terrainPiece.transform.parent = transform;
-
-			terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
-
-			terrainList.Add(terrainPiece);
-			time = 0f;
-		}
+		
 	}
 
 	//Fixed Update called at a steady rate
 	void FixedUpdate () {
-		if (lastWallSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.lossyScale.y + 5) {
+		//Keep left and right walls setup
+		Debug.Log( lastWallSpawned.transform.lossyScale.y);
+		if (lastWallSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.GetComponent<BoxCollider2D>().size.y + 0.3) {
 			SpawnWalls();
-
-
+		}
+		//Generate another block after the last one has travelled a certain distance
+		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.position.y) {
+			SpawnBlocks();
 		}
 	}
 
@@ -66,6 +61,15 @@ public class LevelGenerator : MonoBehaviour {
 		terrainList.Add(rightWall);
 
 		lastWallSpawned = rightWall;
+	}
+
+	void SpawnBlocks ()
+	{
+		GameObject terrainPiece = Instantiate (terrainPieces [Random.Range (0, terrainPieces.Length)], new Vector3 (Random.Range (minX, maxX), ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
+		terrainPiece.transform.parent = transform;
+		terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		terrainList.Add (terrainPiece);
+		lastBlockSpawned = terrainPiece;
 	}
 
 	void UpdateSpeed() {
