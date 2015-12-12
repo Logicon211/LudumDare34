@@ -12,21 +12,21 @@ public class MoveShip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
+		if (Input.GetKey(KeyCode.LeftArrow))
 			moveLeft();
-		if (Input.GetKeyDown(KeyCode.RightArrow))
+		if (Input.GetKey(KeyCode.RightArrow))
 			moveRight();
 	}
 
 
 	void moveLeft() 
 	{
-		Debug.Log("Triggering me left");
+		transform.Translate(Vector2.left * Time.deltaTime * currentSpeed);
 	}
 
 	void moveRight()
 	{
-		Debug.Log("Triggering me right");
+		transform.Translate(Vector2.right * Time.deltaTime * currentSpeed);
 	}
 
 }
