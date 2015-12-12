@@ -6,6 +6,7 @@ public class TerrainScript : MonoBehaviour {
 	//Using the timer to destroy this object after a certain amount of time so that we don't have a buildup
 	private float timer;
 	private float beginningYPosition;
+	Ship ship;
 
 
 	// Use this for initialization
@@ -26,7 +27,11 @@ public class TerrainScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		//Check for player collision, blow him up and he loses or whatever
-
+		if (col.gameObject.tag == "Player")
+		{
+			ship = col.gameObject.GetComponent<Ship>();
+			ship.takeHit();
+		}
 		/*Debug.Log(col.gameObject);
 		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
 		if(damagable != null) {

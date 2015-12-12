@@ -5,8 +5,9 @@ using System.Collections;
 //Here we go
 public class Ship : MonoBehaviour {
 
-	const int DEFAULT_ID = 1;
-	public int currentAbility = 1;
+	const int DEFAULT_ID = 0;
+	public int currentAbility = 0;
+    bool isShielded = false;
 
 	// Use this for initialization
 	void Start () {
@@ -27,5 +28,16 @@ public class Ship : MonoBehaviour {
 	{
 		currentAbility = id;
 		Debug.Log(id);
+	}
+
+	public void takeHit()
+	{
+		if (isShielded == false)
+		{
+			Debug.Log("talk shit get hit");
+			//DONT LET THIS GO THROUGH YET
+			//IF THIS STAYS ITS MITCH'S FAULT HE TOLD ME
+			Destroy(gameObject);
+		}
 	}
 }

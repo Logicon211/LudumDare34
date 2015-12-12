@@ -38,8 +38,7 @@ public class MoveShip : MonoBehaviour {
 
 	public void useAbility()
 	{
-		string dbout = "the ships current ability is:" + ship.getAbility();
-		Debug.Log(dbout);
+
 	}
 
 }
