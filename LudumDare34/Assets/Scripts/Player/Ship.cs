@@ -22,4 +22,10 @@ public class Ship : MonoBehaviour {
 	{
 		return currentAbility;
 	}
+
+	public void setAbility(int id)
+	{
+		currentAbility = id;
+		Debug.Log(id);
+	}
 }
