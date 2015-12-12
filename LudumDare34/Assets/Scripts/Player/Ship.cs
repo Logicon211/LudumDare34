@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour {
 
 	const int DEFAULT_ID = 0;
 	public int currentAbility = 0;
+	public int ammo = 0;
     bool isShielded = false;
 
 	// Use this for initialization
@@ -28,6 +29,16 @@ public class Ship : MonoBehaviour {
 	{
 		currentAbility = id;
 		Debug.Log(id);
+	}
+
+	public int getAmmo()
+	{
+		return ammo;
+	}
+
+	public void setAmmo(int i)
+	{
+		ammo += i;
 	}
 
 	public void setShield()

@@ -43,7 +43,11 @@ public class MoveShip : MonoBehaviour {
 
 	public void useAbility()
 	{
-
+		if (ship.getAmmo() > 0)
+		{
+			Debug.Log("Shoot Shoot Shoot");
+			ship.setAmmo(-1);
+		}
 	}
 
 }

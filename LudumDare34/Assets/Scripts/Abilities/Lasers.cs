@@ -1,29 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Lasers : MonoBehaviour {
+public class Lasers : PowerUps {
 	
-	public int abilityId = 1;
-	Ship ship;
-	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	
-	void OnTriggerEnter2D(Collider2D coll)
+	//public int abilityId = 1;
+	// Use this for initializatio
+
+
+	override protected void givePowerUp()
 	{
-		if (coll.gameObject.tag == "Player")
-		{
-			Debug.Log("Fuck");
-			ship = coll.gameObject.GetComponent<Ship>();
-			ship.setAbility(1);
-			Destroy(gameObject);
-		}
+		ship.setAmmo(3);
 	}
+	
+
 }
