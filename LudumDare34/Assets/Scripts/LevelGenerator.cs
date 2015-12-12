@@ -6,16 +6,20 @@ public class LevelGenerator : MonoBehaviour {
 
 	public GameObject[] terrainPieces;
 	public GameObject wallPiece;
+	public GameObject background;
 
 	public float minX = -30;
 	public float maxX = 30;
+
 	public float ySpawnOffset = 10;
+	public float blockSpawnDistance = 10;
 
 	public float playerSpeed = 5;
 
 	private float time;
 	private GameObject lastBlockSpawned;
 	private GameObject lastWallSpawned;
+	private GameObject lastBackgroundSpawned;
 
 	public List<GameObject> terrainList;
 
@@ -25,6 +29,7 @@ public class LevelGenerator : MonoBehaviour {
 		ySpawnOffset = ySpawnOffset + transform.position.y;
 		terrainList = new List<GameObject> ();
 
+		SpawnBackground();
 		SpawnBlocks();
 		SpawnWalls();
 	}
@@ -36,14 +41,19 @@ public class LevelGenerator : MonoBehaviour {
 
 	//Fixed Update called at a steady rate
 	void FixedUpdate () {
+
+		//Generate the background
+		if (lastBackgroundSpawned.transform.position.y <= ySpawnOffset - 7.5) {
+			SpawnBackground();
+		}
+
+		//Generate another block after the last one has travelled a certain distance
+		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - blockSpawnDistance) {
+			SpawnBlocks();
+		}
 		//Keep left and right walls setup
-		Debug.Log( lastWallSpawned.transform.lossyScale.y);
 		if (lastWallSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.GetComponent<BoxCollider2D>().size.y + 0.3) {
 			SpawnWalls();
-		}
-		//Generate another block after the last one has travelled a certain distance
-		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.position.y) {
-			SpawnBlocks();
 		}
 	}
 
@@ -70,6 +80,15 @@ public class LevelGenerator : MonoBehaviour {
 		terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		terrainList.Add (terrainPiece);
 		lastBlockSpawned = terrainPiece;
+	}
+
+	void SpawnBackground ()
+	{
+		GameObject backgroundObject = Instantiate (background, new Vector3 (0, ySpawnOffset, transform.position.z + 10), transform.rotation) as GameObject;
+		backgroundObject.transform.parent = transform;
+		backgroundObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		terrainList.Add (backgroundObject);
+		lastBackgroundSpawned = backgroundObject;
 	}
 
 	void UpdateSpeed() {
