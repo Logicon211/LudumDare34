@@ -18,13 +18,12 @@ public class TurretScript : MonoBehaviour, IEnemy {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-		Debug.Log (Time.deltaTime);
 		if (timer >= 1f) {
 			GameObject shot = Instantiate (garbageShot, transform.position, transform.rotation) as GameObject;
 			if (facingRight) {
-				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (shotSpeed, 0);
+				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (shotSpeed, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 			} else {
-				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (-shotSpeed, 0);
+				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (-shotSpeed, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 			}
 			timer = 0;
 		}

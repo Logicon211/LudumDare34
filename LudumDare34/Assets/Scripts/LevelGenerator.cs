@@ -6,6 +6,8 @@ public class LevelGenerator : MonoBehaviour {
 
 	public GameObject[] terrainPieces;
 	public GameObject[] enemies;
+	public GameObject[] powerUps;
+
 	public GameObject wallPiece;
 	public GameObject background;
 
@@ -26,6 +28,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	public List<GameObject> terrainList;
 	public List<GameObject> enemyList;
+	public List<GameObject> powerupsList;
 
 	// Use this for initialization
 	void Start () {
