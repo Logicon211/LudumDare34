@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class LevelGenerator : MonoBehaviour {
 
 	public GameObject[] terrainPieces;
+	public GameObject[] enemies;
 	public GameObject wallPiece;
 	public GameObject background;
 
@@ -13,6 +14,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	public float ySpawnOffset = 10;
 	public float blockSpawnDistance = 10;
+	public float enemySpawnDistance = 10;
 
 	public float playerSpeed = 5;
 
@@ -20,8 +22,10 @@ public class LevelGenerator : MonoBehaviour {
 	private GameObject lastBlockSpawned;
 	private GameObject lastWallSpawned;
 	private GameObject lastBackgroundSpawned;
+	private GameObject lastEnemySpawned;
 
 	public List<GameObject> terrainList;
+	public List<GameObject> enemyList;
 
 	// Use this for initialization
 	void Start () {
@@ -74,6 +78,7 @@ public class LevelGenerator : MonoBehaviour {
 
 		//SpawnBackground();
 		SpawnBlocks();
+		SpawnEnemies();
 		//SpawnWalls();
 	}
 	
@@ -97,6 +102,11 @@ public class LevelGenerator : MonoBehaviour {
 		//Keep left and right walls setup
 		if (lastWallSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.GetComponent<BoxCollider2D>().size.y + 0.3) {
 			SpawnWalls();
+		}
+
+		//Keep left and right walls setup
+		if (lastEnemySpawned.transform.position.y <= ySpawnOffset - enemySpawnDistance) {
+			SpawnEnemies();
 		}
 	}
 
@@ -134,9 +144,32 @@ public class LevelGenerator : MonoBehaviour {
 		lastBackgroundSpawned = backgroundObject;
 	}
 
-	void UpdateSpeed() {
+	void SpawnEnemies ()
+	{
+		//0 is left, 1 is right
+		int leftOrRight = Random.Range (0, 2);
+		GameObject enemy;
+
+		if (leftOrRight == 0) {
+			enemy = Instantiate (enemies [Random.Range (0, enemies.Length)], new Vector3 (minX, ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
+			IEnemy ienemy = (IEnemy)enemy.gameObject.GetComponent (typeof(IEnemy));
+			ienemy.FaceRight ();
+		} else {
+			enemy = Instantiate (enemies [Random.Range (0, enemies.Length)], new Vector3 (maxX, ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
+		}
+		enemy.transform.parent = transform;
+		enemy.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		enemyList.Add (enemy);
+		lastEnemySpawned = enemy;
+	}
+
+	void UpdateSpeed(float speed) {
+		playerSpeed = speed;
 		foreach (GameObject terrainPiece in terrainList) {
 			terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		}
+		foreach (GameObject enemy in enemies) {
+			enemy.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		}
 	}
 }

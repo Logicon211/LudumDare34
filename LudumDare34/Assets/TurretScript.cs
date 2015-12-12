@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TurretScript : MonoBehaviour {
+public class TurretScript : MonoBehaviour, IEnemy {
 
 
 
 	public GameObject garbageShot;
 	public float shotSpeed = 5f;
 
-	bool facingRight = false;
+	private bool facingRight = false;
 	private float timer;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,6 @@ public class TurretScript : MonoBehaviour {
 		timer += Time.deltaTime;
 		Debug.Log (Time.deltaTime);
 		if (timer >= 1f) {
-			Debug.Log ("SHOOT GARBAGE");
 			GameObject shot = Instantiate (garbageShot, transform.position, transform.rotation) as GameObject;
 			if (facingRight) {
 				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (shotSpeed, 0);
@@ -30,5 +29,13 @@ public class TurretScript : MonoBehaviour {
 			timer = 0;
 		}
 
+	}
+
+	public void FaceRight() {
+		facingRight = true;
+
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
