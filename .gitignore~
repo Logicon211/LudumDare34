@@ -1,12 +1,17 @@
-#ty generated #
+ty generated #
 # =============== #
-Temp/
-Obj/
-Library/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+*.stackdump
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
+[Ee]xported[Oo]bj/
+.vs/
 /*.userprefs
 /*.csproj
 /*.pidb
@@ -27,6 +32,4 @@ Icon?
 ehthumbs.db
 [Tt]humbs.db
 
-LudumDare34/Library/metadata
-LudumDare34/Library/metadata/
-LudumDare34/Library/metadata/*
+*/metadata/*
