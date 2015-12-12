@@ -29,9 +29,52 @@ public class LevelGenerator : MonoBehaviour {
 		ySpawnOffset = ySpawnOffset + transform.position.y;
 		terrainList = new List<GameObject> ();
 
-		SpawnBackground();
+		//initial wall spawns
+		GameObject leftWall = Instantiate (wallPiece, new Vector3 (minX, -5f, transform.position.z +1), transform.rotation) as GameObject;
+		GameObject rightWall = Instantiate (wallPiece, new Vector3 (maxX, -5f, transform.position.z + 1), transform.rotation) as GameObject;
+		leftWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		rightWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		leftWall.transform.parent = transform;
+		rightWall.transform.parent = transform;
+		terrainList.Add(leftWall);
+		terrainList.Add(rightWall);
+		leftWall = Instantiate (wallPiece, new Vector3 (minX, 0, transform.position.z +1), transform.rotation) as GameObject;
+		rightWall = Instantiate (wallPiece, new Vector3 (maxX, 0, transform.position.z + 1), transform.rotation) as GameObject;
+		leftWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		rightWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		leftWall.transform.parent = transform;
+		rightWall.transform.parent = transform;
+		terrainList.Add(leftWall);
+		terrainList.Add(rightWall);
+		leftWall = Instantiate (wallPiece, new Vector3 (minX, 5f, transform.position.z +1), transform.rotation) as GameObject;
+		rightWall = Instantiate (wallPiece, new Vector3 (maxX, 5f, transform.position.z + 1), transform.rotation) as GameObject;
+		leftWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		rightWall.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		leftWall.transform.parent = transform;
+		rightWall.transform.parent = transform;
+		terrainList.Add(leftWall);
+		terrainList.Add(rightWall);
+
+		lastWallSpawned = rightWall;
+
+		//initial background spawns
+		GameObject backgroundObject = Instantiate (background, new Vector3 (0, -7.5f, transform.position.z + 10), transform.rotation) as GameObject;
+		backgroundObject.transform.parent = transform;
+		backgroundObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		terrainList.Add (backgroundObject);
+		backgroundObject = Instantiate (background, new Vector3 (0, 0, transform.position.z + 10), transform.rotation) as GameObject;
+		backgroundObject.transform.parent = transform;
+		backgroundObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		terrainList.Add (backgroundObject);
+		backgroundObject = Instantiate (background, new Vector3 (0, 7.5f, transform.position.z + 10), transform.rotation) as GameObject;
+		backgroundObject.transform.parent = transform;
+		backgroundObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		terrainList.Add (backgroundObject);
+		lastBackgroundSpawned = backgroundObject;
+
+		//SpawnBackground();
 		SpawnBlocks();
-		SpawnWalls();
+		//SpawnWalls();
 	}
 	
 	// Update is called once per frame
