@@ -19,6 +19,7 @@ public class TerrainScript : MonoBehaviour {
 	void Update () {
 		//destroy object after it travels far enough
 		if (transform.position.y < beginningYPosition - 50f) {
+			transform.parent.GetComponent<LevelGenerator> ().terrainList.Remove (transform.gameObject);
 			Object.Destroy (this.gameObject);
 		}
 	}
