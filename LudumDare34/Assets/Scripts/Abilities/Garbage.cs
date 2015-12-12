@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Invinvible : PowerUps {
+public class Garbage : PowerUps {
 	
 	//public int abilityId = 1;
 	// Use this for initializatio
@@ -9,7 +9,7 @@ public class Invinvible : PowerUps {
 	
 	override protected void givePowerUp()
 	{
-		ship.setInvincible();
+		ship.addGarbage(1);
 	}
 	
 	

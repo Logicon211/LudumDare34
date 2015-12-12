@@ -163,7 +163,7 @@ public class LevelGenerator : MonoBehaviour {
 		lastEnemySpawned = enemy;
 	}
 
-	void UpdateSpeed(float speed) {
+	public void UpdateSpeed(float speed) {
 		playerSpeed = speed;
 		foreach (GameObject terrainPiece in terrainList) {
 			terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);

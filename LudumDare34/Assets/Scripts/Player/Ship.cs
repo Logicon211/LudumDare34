@@ -8,16 +8,33 @@ public class Ship : MonoBehaviour {
 	const int DEFAULT_ID = 0;
 	public int currentAbility = 0;
 	public int ammo = 0;
+	int garbage = 0;
     public bool isShielded = false;
-	bool isInvincible = false;
+	public bool isInvincible = false;
+
+	LevelGenerator levelGen;
 
 	// Use this for initialization
 	void Start () {
-	
+		levelGen = GameObject.Find("Level Generator").GetComponent<LevelGenerator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (isInvincible)
+			levelGen.UpdateSpeed(10f);
+	}
+
+	public void addGarbage(int i)
+	{
+		garbage += i;
+	}
+
+	public void loseGarbage(int i)
+	{
+		garbage -= i;
+		if (garbage < 0)
+			garbage = 0;
 	}
 
 	public int getAbility()

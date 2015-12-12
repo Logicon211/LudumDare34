@@ -77,10 +77,12 @@
      <Compile Include="Assets\Example Games\Hat Trick - The Catch Game\Scripts\HT_StartGame.cs" />
      <Compile Include="Assets\INTRO\IntroSpriteFlow.cs" />
      <Compile Include="Assets\INTRO\Score_Script.cs" />
+     <Compile Include="Assets\Scripts\Abilities\Garbage.cs" />
      <Compile Include="Assets\Scripts\Abilities\Invincible.cs" />
      <Compile Include="Assets\Scripts\Abilities\Lasers.cs" />
      <Compile Include="Assets\Scripts\Abilities\Shield.cs" />
      <Compile Include="Assets\Scripts\IDestroyable.cs" />
+     <Compile Include="Assets\Scripts\IEnemy.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\Player\MoveShip.cs" />
      <Compile Include="Assets\Scripts\Player\Ship.cs" />
