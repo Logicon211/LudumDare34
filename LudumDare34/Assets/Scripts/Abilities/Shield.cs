@@ -1,29 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shield : MonoBehaviour {
+public class Shield : PowerUps {
 	
-	public int abilityId = 1;
-	Ship ship;
+	//public int abilityId = 1;
+	// Use this for initializatio
 	
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	
-	void OnTriggerEnter2D(Collider2D coll)
+	override protected void givePowerUp()
 	{
-		if (coll.gameObject.tag == "Player")
-		{
-			Debug.Log("Fuck");
-			ship = coll.gameObject.GetComponent<Ship>();
-			ship.setShield();
-			Destroy(gameObject);
-		}
+		ship.setShield();
 	}
+	
+	
 }
