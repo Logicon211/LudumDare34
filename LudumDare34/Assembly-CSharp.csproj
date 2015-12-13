@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Conversations.cs" />
      <Compile Include="Assets\Door_Behaviour.cs" />
      <Compile Include="Assets\INTRO\IntroSpriteFlow.cs" />
      <Compile Include="Assets\INTRO\Score_Script.cs" />
@@ -55,6 +54,7 @@
      <Compile Include="Assets\Scripts\Abilities\Lasers.cs" />
      <Compile Include="Assets\Scripts\Abilities\Shield.cs" />
      <Compile Include="Assets\Scripts\BackgroundScript.cs" />
+     <Compile Include="Assets\Scripts\Conversations.cs" />
      <Compile Include="Assets\Scripts\IDestroyable.cs" />
      <Compile Include="Assets\Scripts\IEnemy.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
