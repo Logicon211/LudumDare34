@@ -7,6 +7,10 @@ public class MoveShip : MonoBehaviour {
 
 	public float currentSpeed = 5;
 	public float currentGarbage = 1;
+
+	public float magnetSpeed = 0;
+	public bool magnetLeft = false;
+	public bool magnetRight = false;
 	Ship ship;
 
 
@@ -25,20 +29,37 @@ public class MoveShip : MonoBehaviour {
 		else if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
 			useAbility();
 		else {
-			transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , 0);
-
+			if (magnetLeft) {
+				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
+			} else if (magnetRight) {
+				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
+			} else {
+				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			}
 		}
 	}
 
 
 	public void moveLeft() 
 	{	
-		transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-currentSpeed , 0);
+		if (magnetLeft) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-currentSpeed+magnetSpeed, 0);
+		} else if (magnetRight) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-currentSpeed-magnetSpeed, 0);
+		} else {
+			transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-currentSpeed , 0);
+		}
 	}
 
 	public void moveRight()
 	{
-		transform.GetComponent<Rigidbody2D>().velocity = new Vector2(currentSpeed , 0);
+		if (magnetLeft) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed+magnetSpeed, 0);
+		} else if (magnetRight) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed-magnetSpeed, 0);
+		} else {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed, 0);
+		}
 	}
 
 	public void useAbility()

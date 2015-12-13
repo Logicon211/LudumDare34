@@ -181,7 +181,6 @@ public class LevelGenerator : MonoBehaviour {
 		powerUpObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		powerupsList.Add (powerUpObject);
 		lastPowerUpSpawned = powerUpObject;
-		Debug.Log ("POWER UP SPAWNED");
 	}
 
 	public void UpdateSpeed(float speed) {
