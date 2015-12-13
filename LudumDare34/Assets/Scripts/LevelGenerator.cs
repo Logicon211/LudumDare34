@@ -111,10 +111,12 @@ public class LevelGenerator : MonoBehaviour {
 	//Fixed Update called at a steady rate
 	void FixedUpdate () {
 
-		/*if (spawnPreConNext) {
+		bool notBlockedByPreCon = checkPreConBoundries ();
+
+		if (spawnPreConNext) {
 			SpawnPreCon();
 			spawnPreConNext = false;
-		}*/
+		}
 
 		//Generate the background
 		if (lastBackgroundSpawned.transform.position.y <= ySpawnOffset - 7.0) {
@@ -122,12 +124,12 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if ((lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty))/* && (checkPreConBoundries)*/) {
+		if ((lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty)) && notBlockedByPreCon) {
 			SpawnBlocks();
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if ((lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance)/* && checkPreConBoundries*/) {
+		if ((lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance) && notBlockedByPreCon) {
 			SpawnPowerups();
 		}
 
@@ -137,7 +139,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Keep left and right walls setup
-		if ((lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty))/* && checkPreConBoundries*/) {
+		if ((lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty)) && notBlockedByPreCon) {
 			SpawnEnemies();
 		}
 	}
@@ -240,6 +242,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
+	//returns true if not blocked by precon
 	private bool checkPreConBoundries() {
 		return (lastPreConSpawned == null || lastPreConSpawned.transform.FindChild ("TopOfPreCon").transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty));
 	}

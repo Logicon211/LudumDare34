@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MagnetScript : MonoBehaviour, IEnemy {
 
-	public float pullSpeed = 4;
+	public float pullSpeed = 2;
 
 	private bool facingRight = false;
 	private float beginningYPosition;
@@ -20,7 +20,10 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 	void Update () {
 		//Pull player towards it?
 		if (transform.position.y < beginningYPosition - 25f) {
-			transform.parent.GetComponent<LevelGenerator> ().terrainList.Remove (transform.gameObject);
+			LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
+			if (levelGen != null) {
+				levelGen.enemyList.Remove (transform.gameObject);
+			}
 			Object.Destroy (this.gameObject);
 			//Remove all projectiles too?
 		}

@@ -15,7 +15,10 @@ public class PowerUps : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (transform.position.y < beginningYPosition - 25f) {
-			transform.parent.GetComponent<LevelGenerator> ().powerupsList.Remove (transform.gameObject);
+			LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
+			if (levelGen != null) {
+				levelGen.powerupsList.Remove (transform.gameObject);
+			}
 			Object.Destroy (this.gameObject);
 		}
 	}
