@@ -11,6 +11,15 @@ public class Conversations : MonoBehaviour {
 	public Sprite sprite5;
 	public Animator door;
 	private SpriteRenderer spriteRenderer;
+	public AudioSource AUDI;
+	public AudioClip goFastCraig;
+	public AudioClip goodLuckOutThere;
+	public AudioClip hesAMadMan;
+	public AudioClip INeverLose;
+	public AudioClip shieldFullPower;
+	public AudioClip takeOutTheTrash;
+	public AudioClip timeToTakeOutTrash;
+	public AudioClip youllNeverMakeit;
 
 	//the timer is a counter we will use to determine when to show the next conversation
 	int timer;
@@ -29,7 +38,7 @@ public class Conversations : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (timer > 1200) {
+		if (timer > 400) {
 			timer = 0;
 			Conversation ();
 		}
@@ -38,7 +47,8 @@ public class Conversations : MonoBehaviour {
 		void Conversation(){
 		//pick a face at random and one of their phrases.
 		float chosen_face;
-		chosen_face = Random.Range (0, 4); 
+		//chosen_face = Random.Range (0, 4); 
+		chosen_face = 0;
 		FacePrep ();
 
 		if (chosen_face < 1) {
@@ -48,16 +58,28 @@ public class Conversations : MonoBehaviour {
 			//Chose a line to say
 
 			float line_picker;
-			line_picker = Random.Range (0, 2);
+			//line_picker = Random.Range (0, 2);
+			line_picker =0;
+
 
 			if(line_picker < 1){
+				AUDI.Stop ();
+				AUDI.clip = INeverLose; 
+				AUDI.Play ();
 				//Say line and loop till line is finished, then
-				FaceEnd();
+			
+				Invoke("FaceEnd", 2);
+
 			}
 
 			else if(line_picker < 2){
 				//Say line and loop till line is finished, then
-				FaceEnd();
+				AUDI.Stop ();
+				AUDI.clip = youllNeverMakeit; 
+				AUDI.Play ();
+				//Say line and loop till line is finished, then
+
+				Invoke("FaceEnd", 2);
 			}
 
 		}	//End of face 1
