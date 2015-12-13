@@ -18,6 +18,8 @@ public class Ship : MonoBehaviour {
 	public Sprite twoBullets;
 	public Sprite oneBullet;
 
+	public bool isDead = false;
+
 	LevelGenerator levelGen;
 
 	// Use this for initialization
@@ -114,7 +116,9 @@ public class Ship : MonoBehaviour {
 
 		}
 		else{
-			Destroy(gameObject);
+			isDead = true;
+			transform.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			//disable collider and stuff too?
 		}
 	}
 }
