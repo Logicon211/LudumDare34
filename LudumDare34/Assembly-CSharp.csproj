@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\TestProjectScripts\WallHealthController.cs" />
      <Compile Include="Assets\Scripts\TestProjectScripts\bullet.cs" />
      <Compile Include="Assets\Scripts\TurretScript.cs" />
+     <Compile Include="Assets\Scripts\explosion.cs" />
      <Compile Include="Assets\WallScript.cs" />
      <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
      <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />

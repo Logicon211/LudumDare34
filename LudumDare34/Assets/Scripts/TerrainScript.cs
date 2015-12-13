@@ -7,6 +7,7 @@ public class TerrainScript : MonoBehaviour, IDestroyable<GameObject> {
 	private float beginningYPosition;
 	Ship ship;
 
+	public GameObject explosionEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +44,7 @@ public class TerrainScript : MonoBehaviour, IDestroyable<GameObject> {
 
 	public void kill(GameObject killObject)
 	{
+		Instantiate (explosionEffect, transform.position, transform.rotation);
 		Destroy(killObject);
 	}
 }

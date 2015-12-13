@@ -6,6 +6,8 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 	public float pullSpeed = 4;
 
 	private bool facingRight = false;
+	private int difficulty = 1;
+
 	private float timer;
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,10 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	public void SetDifficulty(int dif) {
+		difficulty = dif;
 	}
 
 	public void OnTriggerStay2D(Collider2D coll)

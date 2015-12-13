@@ -15,13 +15,15 @@ public class LevelGenerator : MonoBehaviour {
 	public float maxX = 30;
 
 	public float ySpawnOffset = 10;
-	public float blockSpawnDistance = 10;
-	public float enemySpawnDistance = 10;
+	public float blockSpawnDistance = 8;
+	public float enemySpawnDistance = 9;
 	public float powerUpSpawnDistance = 10;
 
 	public float playerSpeed = 5;
 
 	private float time;
+	private int difficulty;
+
 	private GameObject lastBlockSpawned;
 	private GameObject lastWallSpawned;
 	private GameObject lastBackgroundSpawned;
@@ -35,6 +37,7 @@ public class LevelGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		time = 0f;
+		difficulty = 1;
 		ySpawnOffset = ySpawnOffset + transform.position.y;
 		terrainList = new List<GameObject> ();
 
@@ -90,7 +93,11 @@ public class LevelGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		time += Time.deltaTime;
+		if (time >= 15) {
+			difficulty++;
+			time = 0;
+		}
 	}
 
 	//Fixed Update called at a steady rate
@@ -102,7 +109,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - blockSpawnDistance) {
+		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty)) {
 			SpawnBlocks();
 		}
 
@@ -117,7 +124,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Keep left and right walls setup
-		if (lastEnemySpawned.transform.position.y <= ySpawnOffset - enemySpawnDistance) {
+		if (lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty)) {
 			SpawnEnemies();
 		}
 	}
@@ -166,9 +173,14 @@ public class LevelGenerator : MonoBehaviour {
 			enemy = Instantiate (enemies [Random.Range (0, enemies.Length)], new Vector3 (minX, ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
 			IEnemy ienemy = (IEnemy)enemy.gameObject.GetComponent (typeof(IEnemy));
 			ienemy.FaceRight ();
+			ienemy.SetDifficulty(difficulty);
 		} else {
 			enemy = Instantiate (enemies [Random.Range (0, enemies.Length)], new Vector3 (maxX, ySpawnOffset, transform.position.z), transform.rotation) as GameObject;
+			IEnemy ienemy = (IEnemy)enemy.gameObject.GetComponent (typeof(IEnemy));
+			ienemy.SetDifficulty(difficulty);
 		}
+
+
 		enemy.transform.parent = transform;
 		enemy.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		enemyList.Add (enemy);
