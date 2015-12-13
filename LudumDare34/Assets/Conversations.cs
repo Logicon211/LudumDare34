@@ -21,6 +21,7 @@ public class Conversations : MonoBehaviour {
 	public AudioClip timeToTakeOutTrash;
 	public AudioClip youllNeverMakeit;
 	public AudioClip powerupPickupSound;
+	public AudioSource powerUpSource;
 
 	//the timer is a counter we will use to determine when to show the next conversation
 	int timer;
@@ -46,25 +47,29 @@ public class Conversations : MonoBehaviour {
 	}
 
 	public void PowerupPickup(int powerupType){
-		AUDI.Stop ();
-		AUDI.clip = powerupPickup; 
-		AUDI.Play ();
+		powerUpSource.Stop ();
+		powerUpSource.clip = powerupPickupSound; 
+		powerUpSource.Play ();
 
 		if (!AUDI.isPlaying) {
 			timer = 0;
 
-			if (powerupType == 3) {
+			if (powerupType == 3) {//shield
 				AUDI.Stop ();
 				AUDI.clip = shieldFullPower; 
 				AUDI.Play ();
-			} else if (powerupType == 2) {
-				AUDI.Stop ();
-				AUDI.clip = ; 
-				AUDI.Play ();
-			} else if (powerupType == 1) {
-				AUDI.Stop ();
-				AUDI.clip = INeverLose; 
-				AUDI.Play ();
+			} 
+
+			else if (powerupType == 2) {
+			//	AUDI.Stop ();
+			//	AUDI.clip = ; 
+			//	AUDI.Play ();
+			} 
+
+			else if (powerupType == 1) {
+			//	AUDI.Stop ();
+			//	AUDI.clip = ; 
+			//	AUDI.Play ();
 			}
 		}
 
@@ -136,5 +141,6 @@ public class Conversations : MonoBehaviour {
 		//This function will close the doors that display the faces
 			door.SetBool("Open", false);
 			door.SetBool("Close", true);
+			AUDI.Stop ();
 	}
 }

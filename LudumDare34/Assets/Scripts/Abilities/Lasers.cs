@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Lasers : PowerUps {
-	
 	//public int abilityId = 1;
 	// Use this for initializatio
 

@@ -58,10 +58,12 @@
      <Compile Include="Assets\Scripts\IEnemy.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\MagnetScript.cs" />
+     <Compile Include="Assets\Scripts\Pause_Menu.cs" />
      <Compile Include="Assets\Scripts\Player\MoveShip.cs" />
      <Compile Include="Assets\Scripts\Player\Ship.cs" />
      <Compile Include="Assets\Scripts\Player\Shoot.cs" />
      <Compile Include="Assets\Scripts\PowerUps.cs" />
+     <Compile Include="Assets\Scripts\SceneFadeInOut.cs" />
      <Compile Include="Assets\Scripts\TerrainScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectScripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\TestProjectScripts\LoadLevel.cs" />
@@ -76,6 +78,7 @@
      <Compile Include="Assets\Scripts\TurretScript.cs" />
      <Compile Include="Assets\Scripts\WallScript.cs" />
      <Compile Include="Assets\Scripts\explosion.cs" />
+     <Compile Include="Assets\WinLossChecker.cs" />
      <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
      <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />
  <Reference Include="UnityEngine.UI">

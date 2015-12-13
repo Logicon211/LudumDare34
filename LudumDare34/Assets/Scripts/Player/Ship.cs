@@ -17,6 +17,7 @@ public class Ship : MonoBehaviour {
 	public Sprite threeBullets;
 	public Sprite twoBullets;
 	public Sprite oneBullet;
+	public Conversations convIn;
 
 	public bool isDead = false;
 
@@ -70,6 +71,12 @@ public class Ship : MonoBehaviour {
 		return ammo;
 	}
 
+
+	//This calls the poweruppickup function in conversation. 3 is shields, 2 is lazers, 1 is speed boost.
+	public void shipConvo(int i){
+		convIn.PowerupPickup (i);
+	}
+
 	public void setAmmo(int i)
 	{
 		ammo += i;
@@ -77,6 +84,7 @@ public class Ship : MonoBehaviour {
 		if (ammo >= 3) {
 			spriteRenderer.sprite = threeBullets;
 			ammo = 3;
+			shipConvo (2);
 		} 
 		else if (ammo == 2) {
 			spriteRenderer.sprite = twoBullets;
@@ -91,7 +99,10 @@ public class Ship : MonoBehaviour {
 
 	public void setShield()
 	{
-		isShielded = true;
+		if (!isShielded) {
+			shipConvo (3);
+			isShielded = true;
+		}
 	}
 
 	public void loseShield()
@@ -101,8 +112,10 @@ public class Ship : MonoBehaviour {
 
 	public void setInvincible()
 	{
+		shipConvo (1);
 		isInvincible = true;
 		invincibleTime = 3f;
+
 	}
 
 	public void takeHit()
