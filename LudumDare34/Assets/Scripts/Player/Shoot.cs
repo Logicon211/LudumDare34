@@ -20,8 +20,7 @@ public class Shoot : MonoBehaviour {
 		IDestroyable damagable = (IDestroyable)col.gameObject.GetComponent(typeof(IDestroyable));
 		if(damagable != null) {
 			damagable.kill();
-			Debug.Log("Bullet hit");
-			Destroy(gameObject);
+			Object.Destroy(this.gameObject);
 		}
 	}
 }

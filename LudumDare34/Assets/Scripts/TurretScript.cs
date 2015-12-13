@@ -9,11 +9,14 @@ public class TurretScript : MonoBehaviour, IEnemy {
 	public float shotSpeed = 5f;
 
 	private bool facingRight = false;
+	private float beginningYPosition;
+
 	private int difficulty = 1;
 	private float timer;
 	// Use this for initialization
 	void Start () {
 		timer = 0f;
+		beginningYPosition = transform.position.y;
 	}
 	
 	// Update is called once per frame
@@ -27,6 +30,12 @@ public class TurretScript : MonoBehaviour, IEnemy {
 				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (-shotSpeed, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 			}
 			timer = 0;
+		}
+
+		if (transform.position.y < beginningYPosition - 25f) {
+			transform.parent.GetComponent<LevelGenerator> ().terrainList.Remove (transform.gameObject);
+			Object.Destroy (this.gameObject);
+			//Remove all projectiles too?
 		}
 
 	}

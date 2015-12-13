@@ -6,17 +6,24 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 	public float pullSpeed = 4;
 
 	private bool facingRight = false;
+	private float beginningYPosition;
 	private int difficulty = 1;
 
 	private float timer;
 	// Use this for initialization
 	void Start () {
 		timer = 0f;
+		beginningYPosition = transform.position.y;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		//Pull player towards it?
+		if (transform.position.y < beginningYPosition - 25f) {
+			transform.parent.GetComponent<LevelGenerator> ().terrainList.Remove (transform.gameObject);
+			Object.Destroy (this.gameObject);
+			//Remove all projectiles too?
+		}
 	}
 
 	public void FaceRight() {
