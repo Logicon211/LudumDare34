@@ -4,7 +4,6 @@ using System.Collections;
 public class WinLossChecker : MonoBehaviour {
 
 	public GameObject player;
-	public GameObject gameEndingBarrel;
 
 	private Ship playerScript;
 	// Use this for initialization
