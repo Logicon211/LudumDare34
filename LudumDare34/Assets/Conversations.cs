@@ -55,7 +55,7 @@ public class Conversations : MonoBehaviour {
 				FaceEnd();
 			}
 
-			else if(line_picker line_picker < 2){
+			else if(line_picker < 2){
 				//Say line and loop till line is finished, then
 				FaceEnd();
 			}
