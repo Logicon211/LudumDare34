@@ -9,6 +9,7 @@ public class Ship : MonoBehaviour {
 	public int currentAbility = 0;
 	public int ammo;
 	int garbage = 0;
+	int previousGarbage = 0;
     public bool isShielded = false;
 	public bool isInvincible = false;
 	float invincibleTime = 0f;
@@ -17,10 +18,16 @@ public class Ship : MonoBehaviour {
 	public Sprite threeBullets;
 	public Sprite twoBullets;
 	public Sprite oneBullet;
+	public Sprite cleanShip;
+	public Sprite dirtyShip;
 	public Conversations convIn;
+	const float SIZE = .1f;
+	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE = 1.9180f;
+	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE = 2.2504f;
 
 	public bool isDead = false;
 	SpriteRenderer shieldSprite;
+	SpriteRenderer thisSprite;
 	LevelGenerator levelGen;
 
 	// Use this for initialization
@@ -29,10 +36,12 @@ public class Ship : MonoBehaviour {
 		levelGen = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>();
 		shieldSprite = transform.FindChild("ShieldContainer").GetComponent<SpriteRenderer>();
 		ammoRenderer = spriteIn.GetComponent<SpriteRenderer>();
+		thisSprite = gameObject.GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		changeSize();
 		if (isInvincible)
 		{
 			levelGen.UpdateSpeed(10f);
@@ -42,6 +51,27 @@ public class Ship : MonoBehaviour {
 				isInvincible = false;
 				levelGen.UpdateSpeed (5f);
 			}
+		}
+	}
+
+	public void changeSize()
+	{
+		if (garbage == 0)
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = cleanShip;
+		}
+		else
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = dirtyShip;
+		}
+		if (garbage != previousGarbage)
+		{
+			if (garbage == 0)
+			transform.localScale = new Vector3(1 + (garbage * SIZE), 1 + (garbage * SIZE), 1);
+			else
+			transform.localScale = new Vector3(DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE + (garbage * SIZE), DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE + (garbage * SIZE), 1);
+
+			previousGarbage = garbage;
 		}
 	}
 
