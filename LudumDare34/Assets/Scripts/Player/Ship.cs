@@ -12,12 +12,18 @@ public class Ship : MonoBehaviour {
     public bool isShielded = false;
 	public bool isInvincible = false;
 	float invincibleTime = 0f;
+	public GameObject spriteIn; //Used for changing the amount of ammo we have.
+	private SpriteRenderer spriteRenderer;
+	public Sprite threeBullets;
+	public Sprite twoBullets;
+	public Sprite oneBullet;
 
 	LevelGenerator levelGen;
 
 	// Use this for initialization
 	void Start () {
 		levelGen = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>();
+		spriteRenderer = spriteIn.GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -65,6 +71,20 @@ public class Ship : MonoBehaviour {
 	public void setAmmo(int i)
 	{
 		ammo += i;
+
+		if (ammo >= 3) {
+			spriteRenderer.sprite = threeBullets;
+			ammo = 3;
+		} 
+		else if (ammo == 2) {
+			spriteRenderer.sprite = twoBullets;
+		}
+		else if (ammo ==1){
+			spriteRenderer.sprite = oneBullet;
+		}
+		else{
+			spriteRenderer.sprite = null;
+		}
 	}
 
 	public void setShield()
