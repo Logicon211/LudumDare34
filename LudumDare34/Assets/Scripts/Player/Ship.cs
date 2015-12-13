@@ -72,6 +72,11 @@ public class Ship : MonoBehaviour {
 		isShielded = true;
 	}
 
+	public void loseShield()
+	{
+		isShielded = false;
+	}
+
 	public void setInvincible()
 	{
 		isInvincible = true;
@@ -82,7 +87,7 @@ public class Ship : MonoBehaviour {
 	{
 		if (isShielded)
 		{
-			isShielded = false;
+			loseShield();
 		}
 		else if (isInvincible)
 		{
