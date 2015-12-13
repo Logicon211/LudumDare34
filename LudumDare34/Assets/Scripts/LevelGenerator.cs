@@ -129,7 +129,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if ((lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance) && notBlockedByPreCon) {
+		if ((lastPowerUpSpawned == null || (lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance)) && notBlockedByPreCon) {
 			SpawnPowerups();
 		}
 
