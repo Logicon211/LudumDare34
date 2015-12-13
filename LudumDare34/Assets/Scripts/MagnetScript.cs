@@ -31,13 +31,11 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 		{
 			//Pull player towards it
 			if (coll.gameObject.transform.position.x > transform.position.x) {
-				Debug.Log ("ON LEFT SIDE");
-				coll.gameObject.GetComponent<MoveShip> ().magnetLeft = true;
+				coll.gameObject.GetComponent<MoveShip> ().magnetOnLeft = true;
 				coll.gameObject.GetComponent<MoveShip> ().magnetSpeed = pullSpeed;
 				//coll.gameObject.transform.position = new Vector3(coll.gameObject.transform.position.x+pullSpeed, coll.gameObject.transform.position.y, coll.gameObject.transform.position.z);
 			} else {
-				Debug.Log ("ON RIGHT SIDE");
-				coll.gameObject.GetComponent<MoveShip> ().magnetRight = true;
+				coll.gameObject.GetComponent<MoveShip> ().magnetOnRight = true;
 				coll.gameObject.GetComponent<MoveShip> ().magnetSpeed = pullSpeed;
 				//coll.gameObject.transform.position = new Vector3(coll.gameObject.transform.position.x-pullSpeed, coll.gameObject.transform.position.y, coll.gameObject.transform.position.z);
 			}
@@ -47,8 +45,8 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 	public void OnTriggerExit2D(Collider2D coll)
 	{
 		if (coll.gameObject.tag == "Player") {
-			coll.gameObject.GetComponent<MoveShip> ().magnetRight = false;
-			coll.gameObject.GetComponent<MoveShip> ().magnetLeft = true;
+			coll.gameObject.GetComponent<MoveShip> ().magnetOnRight = false;
+			coll.gameObject.GetComponent<MoveShip> ().magnetOnLeft = false;
 			coll.gameObject.GetComponent<MoveShip> ().magnetSpeed = 0;
 		}
 	}

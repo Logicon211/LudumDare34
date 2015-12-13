@@ -9,8 +9,8 @@ public class MoveShip : MonoBehaviour {
 	public float currentGarbage = 1;
 
 	public float magnetSpeed = 0;
-	public bool magnetLeft = false;
-	public bool magnetRight = false;
+	public bool magnetOnLeft = false;
+	public bool magnetOnRight = false;
 	Ship ship;
 
 
@@ -19,7 +19,7 @@ public class MoveShip : MonoBehaviour {
 		Debug.Log("Shiny teeth are go");
 		ship = GetComponent<Ship>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
@@ -29,10 +29,10 @@ public class MoveShip : MonoBehaviour {
 		else if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
 			useAbility();
 		else {
-			if (magnetLeft) {
+			if (magnetOnLeft) {
 				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
-			} else if (magnetRight) {
-				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
+			} else if (magnetOnRight) {
+				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (magnetSpeed, 0);
 			} else {
 				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			}
@@ -42,10 +42,10 @@ public class MoveShip : MonoBehaviour {
 
 	public void moveLeft() 
 	{	
-		if (magnetLeft) {
-			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-currentSpeed+magnetSpeed, 0);
-		} else if (magnetRight) {
+		if (magnetOnLeft) {
 			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-currentSpeed-magnetSpeed, 0);
+		} else if (magnetOnRight) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-currentSpeed+magnetSpeed, 0);
 		} else {
 			transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-currentSpeed , 0);
 		}
@@ -53,10 +53,10 @@ public class MoveShip : MonoBehaviour {
 
 	public void moveRight()
 	{
-		if (magnetLeft) {
-			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed+magnetSpeed, 0);
-		} else if (magnetRight) {
+		if (magnetOnLeft) {
 			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed-magnetSpeed, 0);
+		} else if (magnetOnRight) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed+magnetSpeed, 0);
 		} else {
 			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (currentSpeed, 0);
 		}
