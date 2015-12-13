@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TurretScript : MonoBehaviour, IEnemy {
 
@@ -11,8 +12,10 @@ public class TurretScript : MonoBehaviour, IEnemy {
 	private bool facingRight = false;
 	private float beginningYPosition;
 
-	private int difficulty = 1;
+	private float difficulty = 1;
 	private float timer;
+
+	public List<GameObject> shotList;
 	// Use this for initialization
 	void Start () {
 		timer = 0f;
@@ -24,6 +27,7 @@ public class TurretScript : MonoBehaviour, IEnemy {
 		timer += Time.deltaTime;
 		if (timer >= 1f) {
 			GameObject shot = Instantiate (garbageShot, transform.position, transform.rotation) as GameObject;
+			shotList.Add(shot);
 			if (facingRight) {
 				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (shotSpeed, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 			} else {
@@ -34,6 +38,11 @@ public class TurretScript : MonoBehaviour, IEnemy {
 
 		if (transform.position.y < beginningYPosition - 25f) {
 			transform.parent.GetComponent<LevelGenerator> ().terrainList.Remove (transform.gameObject);
+			foreach (GameObject shot in shotList) {
+				if (shot != null) {
+					Object.Destroy (shot);
+				}
+			}
 			Object.Destroy (this.gameObject);
 			//Remove all projectiles too?
 		}
@@ -48,7 +57,7 @@ public class TurretScript : MonoBehaviour, IEnemy {
 		transform.localScale = theScale;
 	}
 
-	public void SetDifficulty(int dif) {
+	public void SetDifficulty(float dif) {
 		difficulty = dif;
 	}
 }

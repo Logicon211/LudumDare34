@@ -33,13 +33,6 @@ public class TerrainScript : MonoBehaviour, IDestroyable {
 			kill();
 
 		}
-		/*Debug.Log(col.gameObject);
-		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
-		if(damagable != null) {
-			GetComponent<AudioSource>().Play();
-			damagable.Damage(damageAmount);
-			player.ChangeHeat(-10);
-		}*/
 	}
 
 	public void kill() {

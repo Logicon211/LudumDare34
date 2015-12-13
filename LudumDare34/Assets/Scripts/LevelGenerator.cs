@@ -22,7 +22,8 @@ public class LevelGenerator : MonoBehaviour {
 	public float playerSpeed = 5;
 
 	private float time;
-	private int difficulty;
+	private float difficulty;
+	public float difficultyIncreaseRate = 0.1f;
 
 	private GameObject lastBlockSpawned;
 	private GameObject lastWallSpawned;
@@ -37,7 +38,7 @@ public class LevelGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		time = 0f;
-		difficulty = 1;
+		difficulty = 1f;
 		ySpawnOffset = ySpawnOffset + transform.position.y;
 		terrainList = new List<GameObject> ();
 
@@ -95,7 +96,7 @@ public class LevelGenerator : MonoBehaviour {
 	void Update () {
 		time += Time.deltaTime;
 		if (time >= 15) {
-			difficulty++;
+			difficulty += difficultyIncreaseRate;
 			time = 0;
 		}
 	}

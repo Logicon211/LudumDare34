@@ -7,7 +7,7 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 
 	private bool facingRight = false;
 	private float beginningYPosition;
-	private int difficulty = 1;
+	private float difficulty = 1;
 
 	private float timer;
 	// Use this for initialization
@@ -34,7 +34,7 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 		transform.localScale = theScale;
 	}
 
-	public void SetDifficulty(int dif) {
+	public void SetDifficulty(float dif) {
 		difficulty = dif;
 	}
 
