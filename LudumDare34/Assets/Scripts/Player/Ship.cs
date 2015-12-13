@@ -22,10 +22,11 @@ public class Ship : MonoBehaviour {
 	public Sprite dirtyShip;
 	public Conversations convIn;
 	const float SIZE = .1f;
-	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE = 1.9180f;
-	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE = 2.2504f;
-
+	//Not needed anymore but I'm keeping it
+	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE = 1f;
+	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE = 1f;
 	public bool isDead = false;
+
 	SpriteRenderer shieldSprite;
 	SpriteRenderer thisSprite;
 	LevelGenerator levelGen;
@@ -67,10 +68,15 @@ public class Ship : MonoBehaviour {
 		if (garbage != previousGarbage)
 		{
 			if (garbage == 0)
-			transform.localScale = new Vector3(1 + (garbage * SIZE), 1 + (garbage * SIZE), 1);
-			else
-			transform.localScale = new Vector3(DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE + (garbage * SIZE), DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE + (garbage * SIZE), 1);
+			{
 
+			transform.localScale = new Vector3(1 + (garbage * SIZE), 1 + (garbage * SIZE), 1);
+			}
+			else
+			{
+				transform.localScale = new Vector3(DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE + (garbage * SIZE), DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE + (garbage * SIZE), 1);
+
+			}
 			previousGarbage = garbage;
 		}
 	}
