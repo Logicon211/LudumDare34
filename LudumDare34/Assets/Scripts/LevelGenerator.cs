@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour {
 	public GameObject[] terrainPieces;
 	public GameObject[] enemies;
 	public GameObject[] powerUps;
+	public GameObject[] preCons;
 
 	public GameObject wallPiece;
 	public GameObject background;
@@ -22,18 +23,23 @@ public class LevelGenerator : MonoBehaviour {
 	public float playerSpeed = 5;
 
 	private float time;
+
 	private float difficulty;
 	public float difficultyIncreaseRate = 0.1f;
+
+	private bool spawnPreConNext = false;
 
 	private GameObject lastBlockSpawned;
 	private GameObject lastWallSpawned;
 	private GameObject lastBackgroundSpawned;
 	private GameObject lastEnemySpawned;
 	private GameObject lastPowerUpSpawned;
+	private GameObject lastPreConSpawned;
 
 	public List<GameObject> terrainList;
 	public List<GameObject> enemyList;
 	public List<GameObject> powerupsList;
+	public List<GameObject> preConList;
 
 	// Use this for initialization
 	void Start () {
@@ -97,6 +103,7 @@ public class LevelGenerator : MonoBehaviour {
 		time += Time.deltaTime;
 		if (time >= 15) {
 			difficulty += difficultyIncreaseRate;
+			spawnPreConNext = true;
 			time = 0;
 		}
 	}
@@ -104,18 +111,23 @@ public class LevelGenerator : MonoBehaviour {
 	//Fixed Update called at a steady rate
 	void FixedUpdate () {
 
+		/*if (spawnPreConNext) {
+			SpawnPreCon();
+			spawnPreConNext = false;
+		}*/
+
 		//Generate the background
 		if (lastBackgroundSpawned.transform.position.y <= ySpawnOffset - 7.0) {
 			SpawnBackground();
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty)) {
+		if ((lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty))/* && (checkPreConBoundries)*/) {
 			SpawnBlocks();
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if (lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance) {
+		if ((lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance)/* && checkPreConBoundries*/) {
 			SpawnPowerups();
 		}
 
@@ -125,7 +137,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Keep left and right walls setup
-		if (lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty)) {
+		if ((lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty))/* && checkPreConBoundries*/) {
 			SpawnEnemies();
 		}
 	}
@@ -196,6 +208,14 @@ public class LevelGenerator : MonoBehaviour {
 		lastPowerUpSpawned = powerUpObject;
 	}
 
+	void SpawnPreCon() {
+		GameObject preConObject = Instantiate (preCons[Random.Range (0, preCons.Length)], new Vector3 (transform.position.x, ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
+		preConObject.transform.parent = transform;
+		preConObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		preConList.Add (preConObject);
+		lastPreConSpawned = preConObject;
+	}
+
 	public void UpdateSpeed(float speed) {
 		playerSpeed = speed;
 		foreach (GameObject terrainPiece in terrainList) {
@@ -213,5 +233,14 @@ public class LevelGenerator : MonoBehaviour {
 				powerUp.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 			}
 		}
+		foreach (GameObject preCon in preConList) {
+			if (preCon != null) {
+				preCon.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+			}
+		}
+	}
+
+	private bool checkPreConBoundries() {
+		return (lastPreConSpawned == null || lastPreConSpawned.transform.FindChild ("TopOfPreCon").transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty));
 	}
 }

@@ -49,6 +49,7 @@
      <Compile Include="Assets\Door_Behaviour.cs" />
      <Compile Include="Assets\INTRO\IntroSpriteFlow.cs" />
      <Compile Include="Assets\INTRO\Score_Script.cs" />
+     <Compile Include="Assets\PreConScript.cs" />
      <Compile Include="Assets\Scripts\Abilities\Garbage.cs" />
      <Compile Include="Assets\Scripts\Abilities\Invincible.cs" />
      <Compile Include="Assets\Scripts\Abilities\Lasers.cs" />
