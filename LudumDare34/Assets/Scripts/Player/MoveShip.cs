@@ -29,12 +29,12 @@ public class MoveShip : MonoBehaviour {
 	void Update () {
 		if (shootTimer > 0f)
 			shootTimer -= Time.deltaTime;
-		if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+		if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
+			useAbility();
+		else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
 			moveLeft();
 		else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
 			moveRight();
-		else if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
-			useAbility();
 		else {
 			if (magnetOnLeft) {
 				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
@@ -71,6 +71,7 @@ public class MoveShip : MonoBehaviour {
 
 	public void useAbility()
 	{
+		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		if (ship.getAmmo() > 0 && shootTimer < 0f)
 		{
 			Instantiate(laserBullet, transform.position, Quaternion.identity);

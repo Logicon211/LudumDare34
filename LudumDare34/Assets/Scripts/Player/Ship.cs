@@ -20,13 +20,13 @@ public class Ship : MonoBehaviour {
 	public Conversations convIn;
 
 	public bool isDead = false;
-
+	SpriteRenderer shieldSprite;
 	LevelGenerator levelGen;
 
 	// Use this for initialization
 	void Start () {
 		levelGen = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>();
-		spriteRenderer = spriteIn.GetComponent<SpriteRenderer>();
+		shieldSprite = transform.FindChild("ShieldContainer").GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -102,12 +102,14 @@ public class Ship : MonoBehaviour {
 		if (!isShielded) {
 			shipConvo (3);
 			isShielded = true;
+		shieldSprite.enabled = true;
 		}
 	}
 
 	public void loseShield()
 	{
 		isShielded = false;
+		shieldSprite.enabled = false;
 	}
 
 	public void setInvincible()
