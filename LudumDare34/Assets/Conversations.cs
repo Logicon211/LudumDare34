@@ -20,6 +20,7 @@ public class Conversations : MonoBehaviour {
 	public AudioClip takeOutTheTrash;
 	public AudioClip timeToTakeOutTrash;
 	public AudioClip youllNeverMakeit;
+	public AudioClip powerupPickupSound;
 
 	//the timer is a counter we will use to determine when to show the next conversation
 	int timer;
@@ -42,6 +43,31 @@ public class Conversations : MonoBehaviour {
 			timer = 0;
 			Conversation ();
 		}
+	}
+
+	public void PowerupPickup(int powerupType){
+		AUDI.Stop ();
+		AUDI.clip = powerupPickup; 
+		AUDI.Play ();
+
+		if (!AUDI.isPlaying) {
+			timer = 0;
+
+			if (powerupType == 3) {
+				AUDI.Stop ();
+				AUDI.clip = shieldFullPower; 
+				AUDI.Play ();
+			} else if (powerupType == 2) {
+				AUDI.Stop ();
+				AUDI.clip = ; 
+				AUDI.Play ();
+			} else if (powerupType == 1) {
+				AUDI.Stop ();
+				AUDI.clip = INeverLose; 
+				AUDI.Play ();
+			}
+		}
+
 	}
 
 		void Conversation(){
