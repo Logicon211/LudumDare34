@@ -16,9 +16,11 @@ public class PreConScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < beginningYPosition - 25f) {
-			transform.parent.GetComponent<LevelGenerator>().preConList.Remove (transform.gameObject);
-			Object.Destroy (this.gameObject);
+		if (transform.position.y < beginningYPosition - 50f) {
+			if (transform.parent != null) {
+				transform.parent.GetComponent<LevelGenerator> ().preConList.Remove (transform.gameObject);
+				Object.Destroy (this.gameObject);
+			}
 		}
 	}
 }

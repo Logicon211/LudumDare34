@@ -20,9 +20,11 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 	void Update () {
 		//Pull player towards it?
 		if (transform.position.y < beginningYPosition - 25f) {
-			LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
-			if (levelGen != null) {
-				levelGen.enemyList.Remove (transform.gameObject);
+			if (transform.parent != null) {
+				LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
+				if (levelGen != null) {
+					levelGen.enemyList.Remove (transform.gameObject);
+				}
 			}
 			Object.Destroy (this.gameObject);
 			//Remove all projectiles too?

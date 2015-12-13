@@ -37,9 +37,11 @@ public class TurretScript : MonoBehaviour, IEnemy {
 		}
 
 		if (transform.position.y < beginningYPosition - 25f) {
-			LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
-			if (levelGen != null) {
-				levelGen.enemyList.Remove (transform.gameObject);
+			if (transform.parent != null) {
+				LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
+				if (levelGen != null) {
+					levelGen.enemyList.Remove (transform.gameObject);
+				}
 			}
 			foreach (GameObject shot in shotList) {
 				if (shot != null) {
