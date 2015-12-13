@@ -11,6 +11,7 @@ public class Ship : MonoBehaviour {
 	int garbage = 0;
     public bool isShielded = false;
 	public bool isInvincible = false;
+	float invincibleTime = 0f;
 
 	LevelGenerator levelGen;
 
@@ -22,7 +23,15 @@ public class Ship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isInvincible)
+		{
 			levelGen.UpdateSpeed(10f);
+			invincibleTime -= Time.deltaTime;
+			if (invincibleTime <= 0f)
+			{
+				isInvincible = false;
+				levelGen.UpdateSpeed (5f);
+			}
+		}
 	}
 
 	public void addGarbage(int i)
@@ -66,6 +75,7 @@ public class Ship : MonoBehaviour {
 	public void setInvincible()
 	{
 		isInvincible = true;
+		invincibleTime = 3f;
 	}
 
 	public void takeHit()
@@ -73,8 +83,10 @@ public class Ship : MonoBehaviour {
 		if (isShielded)
 		{
 			isShielded = false;
-			//DONT LET THIS GO THROUGH YET
-			//IF THIS STAYS ITS MITCH'S FAULT HE TOLD ME
+		}
+		else if (isInvincible)
+		{
+
 		}
 		else{
 			Destroy(gameObject);
