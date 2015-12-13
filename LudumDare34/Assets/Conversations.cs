@@ -22,6 +22,8 @@ public class Conversations : MonoBehaviour {
 	public AudioClip youllNeverMakeit;
 	public AudioClip powerupPickupSound;
 	public AudioSource powerUpSource;
+	public AudioSource doorSource;
+	public AudioClip doorSound;
 
 	//the timer is a counter we will use to determine when to show the next conversation
 	int timer;
@@ -31,6 +33,7 @@ public class Conversations : MonoBehaviour {
 	void Start () {
 		timer = -200;
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		doorSource.volume = 0.35f;
 	}
 
 	void FixedUpdate(){
@@ -53,7 +56,7 @@ public class Conversations : MonoBehaviour {
 
 		if (!AUDI.isPlaying) {
 			timer = 0;
-
+			FacePrep ();
 			if (powerupType == 3) {//shield
 				AUDI.Stop ();
 				AUDI.clip = shieldFullPower; 
@@ -71,6 +74,7 @@ public class Conversations : MonoBehaviour {
 			//	AUDI.clip = ; 
 			//	AUDI.Play ();
 			}
+			Invoke("FaceEnd", 2);
 		}
 
 	}
@@ -132,15 +136,23 @@ public class Conversations : MonoBehaviour {
 
 	void FacePrep(){
 		//This function will open the door to display the face
-		door.SetBool("Open", true);
 		door.SetBool("Close", false);
+		door.SetBool("Open", true);
+		DoorNoise();
 
+	}
+	void DoorNoise(){
+
+		Debug.Log ("DOOR NOISE");
+		doorSource.Stop ();
+		doorSource.clip = doorSound; 
+		doorSource.Play ();
 	}
 
 	void FaceEnd(){
 		//This function will close the doors that display the faces
 			door.SetBool("Open", false);
 			door.SetBool("Close", true);
-			AUDI.Stop ();
+		//DoorNoise ();
 	}
 }
