@@ -16,7 +16,7 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		levelGen = GameObject.Find("Level Generator").GetComponent<LevelGenerator>();
+		levelGen = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>();
 	}
 	
 	// Update is called once per frame
@@ -70,13 +70,8 @@ public class Ship : MonoBehaviour {
 
 	public void takeHit()
 	{
-		if(isInvincible)
+		if (isShielded)
 		{
-			Debug.Log("Invincible");
-		}
-		else if (isShielded)
-		{
-			Debug.Log("talk shit get hit");
 			isShielded = false;
 			//DONT LET THIS GO THROUGH YET
 			//IF THIS STAYS ITS MITCH'S FAULT HE TOLD ME

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Invinvible : PowerUps {
+public class Invincible : PowerUps {
 	
 	//public int abilityId = 1;
 	// Use this for initializatio
