@@ -19,7 +19,6 @@ public class PowerUps : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "Player")
 		{
-			Debug.Log("Fuck");
 			ship = coll.gameObject.GetComponent<Ship>();
 			givePowerUp();
 			Destroy(gameObject);

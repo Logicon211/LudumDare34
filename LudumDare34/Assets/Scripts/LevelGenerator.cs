@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour {
 	public float ySpawnOffset = 10;
 	public float blockSpawnDistance = 10;
 	public float enemySpawnDistance = 10;
+	public float powerUpSpawnDistance = 10;
 
 	public float playerSpeed = 5;
 
@@ -25,6 +26,7 @@ public class LevelGenerator : MonoBehaviour {
 	private GameObject lastWallSpawned;
 	private GameObject lastBackgroundSpawned;
 	private GameObject lastEnemySpawned;
+	private GameObject lastPowerUpSpawned;
 
 	public List<GameObject> terrainList;
 	public List<GameObject> enemyList;
@@ -82,6 +84,7 @@ public class LevelGenerator : MonoBehaviour {
 		//SpawnBackground();
 		SpawnBlocks();
 		SpawnEnemies();
+		SpawnPowerups();
 		//SpawnWalls();
 	}
 	
@@ -102,6 +105,12 @@ public class LevelGenerator : MonoBehaviour {
 		if (lastBlockSpawned.transform.position.y <= ySpawnOffset - blockSpawnDistance) {
 			SpawnBlocks();
 		}
+
+		//Generate another block after the last one has travelled a certain distance
+		if (lastPowerUpSpawned.transform.position.y <= ySpawnOffset - powerUpSpawnDistance) {
+			SpawnPowerups();
+		}
+
 		//Keep left and right walls setup
 		if (lastWallSpawned.transform.position.y <= ySpawnOffset - lastWallSpawned.transform.GetComponent<BoxCollider2D>().size.y + 0.3) {
 			SpawnWalls();
@@ -166,6 +175,15 @@ public class LevelGenerator : MonoBehaviour {
 		lastEnemySpawned = enemy;
 	}
 
+	void SpawnPowerups() {
+		GameObject powerUpObject = Instantiate (powerUps[Random.Range (0, powerUps.Length)], new Vector3 (Random.Range (minX, maxX), ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
+		powerUpObject.transform.parent = transform;
+		powerUpObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+		powerupsList.Add (powerUpObject);
+		lastPowerUpSpawned = powerUpObject;
+		Debug.Log ("POWER UP SPAWNED");
+	}
+
 	public void UpdateSpeed(float speed) {
 		playerSpeed = speed;
 		foreach (GameObject terrainPiece in terrainList) {
@@ -173,9 +191,14 @@ public class LevelGenerator : MonoBehaviour {
 				terrainPiece.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 			}
 		}
-		foreach (GameObject enemy in enemies) {
+		foreach (GameObject enemy in enemyList) {
 			if (enemy != null) {
 				enemy.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+			}
+		}
+		foreach (GameObject powerUp in powerupsList) {
+			if (powerUp != null) {
+				powerUp.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 			}
 		}
 	}
