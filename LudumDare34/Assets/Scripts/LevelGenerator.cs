@@ -129,7 +129,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Generate another block after the last one has travelled a certain distance
-		if ((lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty)) && notBlockedByPreCon) {
+		if ((lastBlockSpawned == null || (lastBlockSpawned.transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty))) && notBlockedByPreCon) {
 			SpawnBlocks();
 		}
 
