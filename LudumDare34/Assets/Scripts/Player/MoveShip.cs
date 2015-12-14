@@ -20,6 +20,7 @@ public class MoveShip : MonoBehaviour {
 	Ship ship;
 	public AudioSource audioIn;
 	public AudioClip lazerSound;
+	public AudioClip clickSound;
 
 	public GameObject laserBullet;
 	public GameObject garbageParticles;
@@ -129,15 +130,22 @@ public class MoveShip : MonoBehaviour {
 		} else {
 			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		}
-		if (ship.getAmmo() > 0 && shootTimer < 0f)
-		{
-			audioIn.Stop ();
-			audioIn.clip = lazerSound; 
-			audioIn.Play ();
 
-			Instantiate(laserBullet, transform.position, Quaternion.identity);
-			ship.setAmmo(-1);
-			shootTimer = .5f;
+		if (shootTimer < 0f) {
+			if (ship.getAmmo () > 0) {
+				audioIn.Stop ();
+				audioIn.clip = lazerSound; 
+				audioIn.Play ();
+
+				Instantiate (laserBullet, transform.position, Quaternion.identity);
+				ship.setAmmo (-1);
+				shootTimer = .5f;
+			} else {
+				audioIn.Stop ();
+				audioIn.clip = clickSound;
+				audioIn.Play ();
+				shootTimer = .5f;
+			}
 		}
 	}
 
