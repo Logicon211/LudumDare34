@@ -32,6 +32,7 @@ public class Conversations : MonoBehaviour {
 	public AudioSource doorSource;
 	public AudioClip doorSound;
 
+	private bool Talkable;
 	private int chosen_face;
 
 	//the timer is a counter we will use to determine when to show the next conversation
@@ -45,6 +46,8 @@ public class Conversations : MonoBehaviour {
 		doorSource.volume = 0.35f;
 		powerUpSource.volume = 0.20f;
 		chosen_face = 4;
+		powerUpSource.clip = powerupPickupSound; 
+		doorSource.clip = doorSound; 
 	}
 
 	void FixedUpdate(){
@@ -66,15 +69,15 @@ public class Conversations : MonoBehaviour {
 	public void PowerupPickup(int powerupType){
 		
 		powerUpSource.Stop ();
-		powerUpSource.clip = powerupPickupSound; 
+		//powerUpSource.clip = powerupPickupSound; Happens only once in the start script now
 		powerUpSource.Play ();
 		int rando = Random.Range (0, 2);
 
 
 		if (rando == 1) {
-			if (!AUDI.isPlaying) {
+			if (Talkable) {
 				spriteRenderer.sprite = sprite4;
-
+				Talkable = false;
 				if (powerupType == 3) {//shield
 					spriteRenderer.sprite = sprite4;
 					timer = 0;
@@ -105,7 +108,7 @@ public class Conversations : MonoBehaviour {
 
 
 	void startingWords(){
-
+		Talkable = false;
 		FacePrep ();
 		AUDI.Stop ();
 		AUDI.clip = goodLuckOutThereSoldier; 
@@ -116,19 +119,21 @@ public class Conversations : MonoBehaviour {
 	void Conversation(){
 		//pick a face at random and one of their phrases.
 		int previous_face = chosen_face;
-		Debug.Log("Previous face: " + previous_face);
+		//Debug.Log("Previous face: " + previous_face);
 
 		chosen_face = Random.Range (0, 3);
-		Debug.Log("chosen face: " + chosen_face);
+		//Debug.Log("chosen face: " + chosen_face);
 
 		while (chosen_face == previous_face) {
 			chosen_face = Random.Range (0, 3); 
 
-			Debug.Log("chosen face (loop): " + chosen_face);
+//Debug.Log("chosen face (loop): " + chosen_face);
 		}
+		Talkable = false;
+		//Debug.Log("talkable: " + Talkable);
+
 
 		FacePrep ();
-
 		if (chosen_face == 0) {
 			//Do face 1
 			spriteRenderer.sprite = sprite2;
@@ -154,8 +159,6 @@ public class Conversations : MonoBehaviour {
 				AUDI.clip = takeOutTheTrash;
 				AUDI.Play ();
 			}
-
-			Invoke("FaceEnd", 2);
 		}	//End of face 1
 
 
@@ -182,8 +185,6 @@ public class Conversations : MonoBehaviour {
 				AUDI.clip = followYourHeart;
 				AUDI.Play ();
 			}//End of face 2
-
-			Invoke("FaceEnd", 2);
 		}
 
 		else {
@@ -209,12 +210,16 @@ public class Conversations : MonoBehaviour {
 				AUDI.clip = youreAlmostToTheCOre;
 				AUDI.Play ();
 			}//End of face 4
-
-			Invoke("FaceEnd", 2);
+				
 		}
-			
+		Invoke("FaceEnd", 2);
 
 		}
+
+	void setTalkable(){
+		Talkable = true;
+		//Debug.Log("talkable (end): " + Talkable);
+	}
 
 	void FacePrep(){
 		//This function will open the door to display the face
@@ -226,7 +231,7 @@ public class Conversations : MonoBehaviour {
 	void DoorNoise(){
 
 		doorSource.Stop ();
-		doorSource.clip = doorSound; 
+		//doorSource.clip = doorSound; Happens only once in the start function
 		doorSource.Play ();
 	}
 
@@ -234,6 +239,8 @@ public class Conversations : MonoBehaviour {
 		//This function will close the doors that display the faces
 			door.SetBool("Open", false);
 			door.SetBool("Close", true);
+
+			Invoke ("setTalkable", 0.5f);
 		//DoorNoise ();
 	}
 }
