@@ -27,7 +27,7 @@ public class IntroSpriteFlow : MonoBehaviour
 	
 	void Update ()
 	{
-		if (Input.anyKeyDown) {
+		if (Input.GetKeyDown(KeyCode.RightArrow)) {
 			if(sceneEnding < sprite.Length){
 				sceneEnding++;
 			}
