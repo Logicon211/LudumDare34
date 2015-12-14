@@ -18,7 +18,7 @@ public class TerrainScript : MonoBehaviour, IDestroyable {
 	// Update is called once per frame
 	void Update () {
 		//destroy object after it travels far enough
-		if (transform.position.y < beginningYPosition - 25f) {
+		if (transform.position.y < -25f) {
 			if (transform.parent != null) {
 				LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
 				if (levelGen != null) {

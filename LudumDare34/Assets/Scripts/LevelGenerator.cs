@@ -113,6 +113,10 @@ public class LevelGenerator : MonoBehaviour {
 
 		bool notBlockedByPreCon = checkPreConBoundries ();
 
+		if (!notBlockedByPreCon) {
+			Debug.Log ("PRECON BLOCKING");
+		}
+
 		if (spawnPreConNext) {
 			SpawnPreCon();
 			spawnPreConNext = false;
@@ -228,6 +232,10 @@ public class LevelGenerator : MonoBehaviour {
 		foreach (GameObject enemy in enemyList) {
 			if (enemy != null) {
 				enemy.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+				TurretScript tScript = enemy.GetComponent<TurretScript> ();
+				if (tScript != null) {
+					tScript.updateShotSpeed (-playerSpeed);
+				}
 			}
 		}
 		foreach (GameObject powerUp in powerupsList) {

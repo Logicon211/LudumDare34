@@ -65,4 +65,12 @@ public class TurretScript : MonoBehaviour, IEnemy {
 	public void SetDifficulty(float dif) {
 		difficulty = dif;
 	}
+
+	public void updateShotSpeed(float speed) {
+		foreach (GameObject shot in shotList) {
+			if (shot != null) {
+				shot.GetComponent<Rigidbody2D> ().velocity = new Vector2 (shot.GetComponent<Rigidbody2D> ().velocity.x, speed);
+			}
+		}
+	}
 }

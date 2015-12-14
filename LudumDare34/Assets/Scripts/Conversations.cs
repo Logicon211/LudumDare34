@@ -215,7 +215,6 @@ public class Conversations : MonoBehaviour {
 	}
 	void DoorNoise(){
 
-		Debug.Log ("DOOR NOISE");
 		doorSource.Stop ();
 		doorSource.clip = doorSound; 
 		doorSource.Play ();
