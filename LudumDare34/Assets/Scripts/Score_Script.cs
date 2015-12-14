@@ -6,6 +6,7 @@ public class Score_Script : MonoBehaviour {
 	public int score;
 	public Text scoreText;
 	public Ship player;
+	public LevelGenerator levelGen;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,7 @@ public class Score_Script : MonoBehaviour {
 
 	void FixedUpdate(){
 		if (!player.isDead) {
-			ScoreManager.setScore(ScoreManager.getScore() + 1);
+			ScoreManager.setScore(ScoreManager.getScore() + Mathf.RoundToInt(levelGen.playerSpeed));
 		}
 	}
 

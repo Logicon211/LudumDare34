@@ -50,5 +50,7 @@ public class TerrainScript : MonoBehaviour, IDestroyable {
 		if (transform.gameObject.GetComponent<CircleCollider2D> () != null) {
 			transform.gameObject.GetComponent<CircleCollider2D> ().enabled = false;
 		}
+
+		ScoreManager.setScore (ScoreManager.getScore () + 100);
 	}
 }
