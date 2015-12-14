@@ -42,7 +42,7 @@ public class Ship : MonoBehaviour {
 		shieldSprite = transform.FindChild("ShieldContainer").GetComponent<SpriteRenderer>();
 		ammoRenderer = spriteIn.GetComponent<SpriteRenderer>();
 		thisSprite = gameObject.GetComponent<SpriteRenderer>();
-		boostoIn.volume = 0.70f;
+		boostoIn.volume = 0.35f;
 	}
 	
 	// Update is called once per frame
@@ -145,8 +145,8 @@ public class Ship : MonoBehaviour {
 	//Gain a shield
 	public void setShield()
 	{
+		shipConvo (3);
 		if (!isShielded) {
-			shipConvo (3);
 			isShielded = true;
 		shieldSprite.enabled = true;
 		}

@@ -43,7 +43,7 @@ public class Conversations : MonoBehaviour {
 		timer = -200;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		doorSource.volume = 0.35f;
-		powerUpSource.volume = 0.35f;
+		powerUpSource.volume = 0.20f;
 		chosen_face = 4;
 	}
 

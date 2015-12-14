@@ -31,6 +31,7 @@ public class MoveShip : MonoBehaviour {
 		Debug.Log("Shiny teeth are go");
 		ship = GetComponent<Ship>();
 		garbageTimer = GARBAGE_DEFAULT;
+		audioIn.volume = 0.50f;
 	}
 
 	// Update is called once per frame
