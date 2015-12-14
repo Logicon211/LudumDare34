@@ -36,12 +36,15 @@ public class MoveShip : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (shootTimer > 0f)
+		if (shootTimer > 0f) {
 			shootTimer -= Time.deltaTime;
-		if (garbageTimer > 0f)
+		}
+		if (garbageTimer > 0f) {
 			garbageTimer -= Time.deltaTime;
-		if (!isHeldDown)
-			garbageParticles.SetActive(false);
+		}
+		if (!isHeldDown || ship.getGarbage() <= 0f) {
+			garbageParticles.SetActive (false);
+		}
 		if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
 		{
 			isHeldDown = true;

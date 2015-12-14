@@ -174,21 +174,15 @@ public class Ship : MonoBehaviour {
 	//Take a hit for the team
 	public void takeHit()
 	{
-		if (isShielded)
-		{
-			loseShield();
-		}
-		else if (isInvincible)
-		{
-
-		}
-		else{
-			isDead = true;
-			transform.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-			transform.gameObject.GetComponent<PolygonCollider2D> ().enabled = false;
-			Object.Destroy (transform.FindChild ("BetterParticles").gameObject);
-
-			//disable collider and stuff too?
+		if (!isInvincible) {
+			if (isShielded) {
+				loseShield ();
+			} else {
+				isDead = true;
+				transform.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+				transform.gameObject.GetComponent<PolygonCollider2D> ().enabled = false;
+				Object.Destroy (transform.FindChild ("BetterParticles").gameObject);
+			}
 		}
 	}
 }

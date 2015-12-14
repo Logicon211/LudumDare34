@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour {
 	public float minX = -30;
 	public float maxX = 30;
 
-	private float preConSpawnOffsetExtra = 3f;
+	private float preConSpawnOffsetExtra = 5f;
 	public float ySpawnOffset = 10;
 	public float blockSpawnDistance = 8;
 	public float enemySpawnDistance = 9;
@@ -208,7 +208,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	void SpawnPowerups() {
-		GameObject powerUpObject = Instantiate (powerUps[Random.Range (0, powerUps.Length)], new Vector3 (Random.Range (minX, maxX), ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
+		GameObject powerUpObject = Instantiate (powerUps[Random.Range (0, powerUps.Length)], new Vector3 (Random.Range (minX+1f, maxX-1f), ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
 		powerUpObject.transform.parent = transform;
 		powerUpObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		powerupsList.Add (powerUpObject);
