@@ -15,6 +15,7 @@ public class LevelGenerator : MonoBehaviour {
 	public float minX = -30;
 	public float maxX = 30;
 
+	private float preConSpawnOffsetExtra = 3f;
 	public float ySpawnOffset = 10;
 	public float blockSpawnDistance = 8;
 	public float enemySpawnDistance = 9;
@@ -215,7 +216,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	void SpawnPreCon() {
-		GameObject preConObject = Instantiate (preCons[Random.Range (0, preCons.Length)], new Vector3 (transform.position.x, ySpawnOffset, transform.position.z + 5), transform.rotation) as GameObject;
+		GameObject preConObject = Instantiate (preCons[Random.Range (0, preCons.Length)], new Vector3 (transform.position.x, ySpawnOffset + preConSpawnOffsetExtra, transform.position.z + 5), transform.rotation) as GameObject;
 		preConObject.transform.parent = transform;
 		preConObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
 		preConList.Add (preConObject);
