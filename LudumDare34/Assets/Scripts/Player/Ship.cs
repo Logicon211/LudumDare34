@@ -104,6 +104,11 @@ public class Ship : MonoBehaviour {
 			garbage = 0;
 	}
 
+	public int getGarbage()
+	{
+		return garbage;
+	}
+
 	//Returns the amount of ammo currently on ship
 	public int getAmmo()
 	{

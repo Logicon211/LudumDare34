@@ -12,33 +12,55 @@ public class MoveShip : MonoBehaviour {
 	public float magnetSpeed = 0;
 	public bool magnetOnLeft = false;
 	public bool magnetOnRight = false;
+	bool isHeldDown = false;
 
 	float shootTimer = .5f;
+	float garbageTimer;
+	public const float GARBAGE_DEFAULT = .5f;
 	Ship ship;
 	public AudioSource audioIn;
 	public AudioClip lazerSound;
 
 	public GameObject laserBullet;
+	public GameObject garbageParticles;
+	public GameObject mainPlayer;
 
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log("Shiny teeth are go");
 		ship = GetComponent<Ship>();
-
+		garbageTimer = GARBAGE_DEFAULT;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (shootTimer > 0f)
 			shootTimer -= Time.deltaTime;
+		if (garbageTimer > 0f)
+			garbageTimer -= Time.deltaTime;
+		if (!isHeldDown)
+			garbageParticles.SetActive(false);
 		if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
+		{
+			isHeldDown = true;
 			useAbility();
+		}
 		else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+		{
+			garbageTimer = GARBAGE_DEFAULT;
+			isHeldDown = false;
 			moveLeft();
+		}
 		else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+		{
+			garbageTimer = GARBAGE_DEFAULT;
+			isHeldDown = false;
 			moveRight();
+		}
 		else {
+			garbageTimer = GARBAGE_DEFAULT;
+			isHeldDown = false;
 			if (magnetOnLeft) {
 				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
 			} else if (magnetOnRight) {
@@ -79,7 +101,14 @@ public class MoveShip : MonoBehaviour {
 	//The only ability that this can use is lasers
 	public void useAbility()
 	{
-		
+		if (ship.getGarbage() != 0 && ship.getAmmo() == 0)
+		{
+			garbageParticles.SetActive(true);
+			if (garbageTimer <= 0f)
+			{
+				ship.loseGarbage(1);
+			}
+		}
 		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		if (magnetOnLeft) {
 			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
