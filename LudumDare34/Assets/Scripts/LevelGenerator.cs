@@ -104,6 +104,9 @@ public class LevelGenerator : MonoBehaviour {
 		time += Time.deltaTime;
 		if (time >= 15) {
 			difficulty += difficultyIncreaseRate;
+			if (difficulty > 3.3f) {
+				difficulty = 3.3f;
+			}
 			spawnPreConNext = true;
 			time = 0;
 		}
