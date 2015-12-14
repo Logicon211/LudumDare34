@@ -14,6 +14,8 @@ public class MoveShip : MonoBehaviour {
 
 	float shootTimer = .5f;
 	Ship ship;
+	public AudioSource audioIn;
+	public AudioClip lazerSound;
 
 	public GameObject laserBullet;
 
@@ -71,9 +73,14 @@ public class MoveShip : MonoBehaviour {
 
 	public void useAbility()
 	{
+		
 		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		if (ship.getAmmo() > 0 && shootTimer < 0f)
 		{
+			audioIn.Stop ();
+			audioIn.clip = lazerSound; 
+			audioIn.Play ();
+
 			Instantiate(laserBullet, transform.position, Quaternion.identity);
 			ship.setAmmo(-1);
 			shootTimer = .5f;

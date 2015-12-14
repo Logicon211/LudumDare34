@@ -32,6 +32,9 @@ public class Ship : MonoBehaviour {
 	SpriteRenderer thisSprite;
 	LevelGenerator levelGen;
 
+	public AudioSource boostoIn;
+	public AudioClip boostSound;
+
 	// Use this for initialization
 	void Start () {
 		ammo = 0;
@@ -39,6 +42,7 @@ public class Ship : MonoBehaviour {
 		shieldSprite = transform.FindChild("ShieldContainer").GetComponent<SpriteRenderer>();
 		ammoRenderer = spriteIn.GetComponent<SpriteRenderer>();
 		thisSprite = gameObject.GetComponent<SpriteRenderer>();
+		boostoIn.volume = 0.70f;
 	}
 	
 	// Update is called once per frame
@@ -155,9 +159,12 @@ public class Ship : MonoBehaviour {
 
 	public void setInvincible()
 	{
+		boostoIn.Stop ();
+		boostoIn.clip = boostSound; 
+		boostoIn.Play ();
 		shipConvo (1);
 		isInvincible = true;
-		invincibleTime = 3f;
+		invincibleTime = 6f;
 
 	}
 
