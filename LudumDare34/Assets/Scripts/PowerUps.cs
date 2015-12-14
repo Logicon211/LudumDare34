@@ -31,11 +31,16 @@ public class PowerUps : MonoBehaviour {
 		{
 			ship = coll.gameObject.GetComponent<Ship>();
 			givePowerUp();
-			Destroy(gameObject);
+			hidePowerUp();
 		}
 	}
 
 	virtual protected void givePowerUp() {
 		//Do something
+	}
+
+	private void hidePowerUp() {
+		gameObject.GetComponent<CircleCollider2D> ().enabled = false;
+		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 	}
 }

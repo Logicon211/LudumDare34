@@ -25,6 +25,8 @@ public class MoveShip : MonoBehaviour {
 	public GameObject garbageParticles;
 	public GameObject mainPlayer;
 
+	private AudioSource garbageRustler;
+
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,7 @@ public class MoveShip : MonoBehaviour {
 		ship = GetComponent<Ship>();
 		garbageTimer = GARBAGE_DEFAULT;
 		audioIn.volume = 0.50f;
+		garbageRustler = garbageParticles.GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -44,6 +47,7 @@ public class MoveShip : MonoBehaviour {
 		}
 		if (!isHeldDown || ship.getGarbage() <= 0f) {
 			garbageParticles.SetActive (false);
+			garbageRustler.Stop ();
 		}
 		if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
 		{
@@ -108,6 +112,9 @@ public class MoveShip : MonoBehaviour {
 		if (ship.getGarbage() != 0 && ship.getAmmo() == 0)
 		{
 			garbageParticles.SetActive(true);
+			if (!garbageRustler.isPlaying) {
+				garbageRustler.Play ();
+			}
 			if (garbageTimer <= 0f)
 			{
 				ship.loseGarbage(1);
