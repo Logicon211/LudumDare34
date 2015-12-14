@@ -68,16 +68,7 @@
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\Score_Script.cs" />
      <Compile Include="Assets\Scripts\TerrainScript.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\HealthController.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\LoadLevel.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\LoadLevelEditor.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\Movement.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\NoseGun.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\RealMan.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\TitleScreen.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\TrackMouse.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\WallHealthController.cs" />
-     <Compile Include="Assets\Scripts\TestProjectScripts\bullet.cs" />
+     <Compile Include="Assets\Scripts\TitleScreen.cs" />
      <Compile Include="Assets\Scripts\TurretScript.cs" />
      <Compile Include="Assets\Scripts\WallScript.cs" />
      <Compile Include="Assets\Scripts\explosion.cs" />

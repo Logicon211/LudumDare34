@@ -20,7 +20,9 @@ public class Garbage : PowerUps {
 
 	private void playSound() {
 		AudioSource audio = gameObject.GetComponent<AudioSource> ();
-		audio.Play ();
+		if (audio != null) {
+			audio.Play ();
+		}
 	}
 	
 	
