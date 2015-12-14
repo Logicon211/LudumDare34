@@ -122,7 +122,7 @@ public class Conversations : MonoBehaviour {
 		Debug.Log("chosen face: " + chosen_face);
 
 		while (chosen_face == previous_face) {
-			chosen_face = Random.Range (0, 4); 
+			chosen_face = Random.Range (0, 3); 
 
 			Debug.Log("chosen face (loop): " + chosen_face);
 		}
