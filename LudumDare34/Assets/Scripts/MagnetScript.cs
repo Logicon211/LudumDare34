@@ -19,7 +19,7 @@ public class MagnetScript : MonoBehaviour, IEnemy {
 	// Update is called once per frame
 	void Update () {
 		//Pull player towards it?
-		if (transform.position.y < beginningYPosition - 25f) {
+		if (transform.position.y < -25f) {
 			if (transform.parent != null) {
 				LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
 				if (levelGen != null) {

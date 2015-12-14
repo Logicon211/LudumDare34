@@ -9,7 +9,7 @@ public class TurretScript : MonoBehaviour, IEnemy {
 	public GameObject garbageShot;
 	public float shotSpeed = 5f;
 
-	private bool facingRight = false;
+	public bool facingRight = false;
 	private float beginningYPosition;
 
 	private float difficulty = 1;
@@ -28,15 +28,23 @@ public class TurretScript : MonoBehaviour, IEnemy {
 		if (timer >= 1f) {
 			GameObject shot = Instantiate (garbageShot, transform.position, transform.rotation) as GameObject;
 			shotList.Add(shot);
-			if (facingRight) {
-				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (shotSpeed, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+			float yVelocity;
+			if (transform.gameObject.GetComponent<Rigidbody2D> ().velocity.y == 0) {
+				yVelocity = transform.parent.gameObject.GetComponent<Rigidbody2D> ().velocity.y;
 			} else {
-				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (-shotSpeed, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+				yVelocity = transform.gameObject.GetComponent<Rigidbody2D> ().velocity.y;
+			}
+
+			if (facingRight) {
+				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (shotSpeed, yVelocity);
+			} else {
+				shot.GetComponent<Rigidbody2D>().velocity = new Vector2 (-shotSpeed, yVelocity);
 			}
 			timer = 0;
 		}
 
-		if (transform.position.y < beginningYPosition - 25f) {
+		if (transform.position.y < -25f) {
 			if (transform.parent != null) {
 				LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
 				if (levelGen != null) {

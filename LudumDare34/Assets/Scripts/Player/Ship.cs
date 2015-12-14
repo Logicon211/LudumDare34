@@ -185,6 +185,9 @@ public class Ship : MonoBehaviour {
 		else{
 			isDead = true;
 			transform.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			transform.gameObject.GetComponent<PolygonCollider2D> ().enabled = false;
+			Object.Destroy (transform.FindChild ("BetterParticles").gameObject);
+
 			//disable collider and stuff too?
 		}
 	}

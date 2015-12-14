@@ -16,7 +16,7 @@ public class MoveShip : MonoBehaviour {
 
 	float shootTimer = .5f;
 	float garbageTimer;
-	public const float GARBAGE_DEFAULT = .5f;
+	public const float GARBAGE_DEFAULT = 0.5f;
 	Ship ship;
 	public AudioSource audioIn;
 	public AudioClip lazerSound;
@@ -107,6 +107,7 @@ public class MoveShip : MonoBehaviour {
 			if (garbageTimer <= 0f)
 			{
 				ship.loseGarbage(1);
+				garbageTimer = GARBAGE_DEFAULT;
 			}
 		}
 		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);

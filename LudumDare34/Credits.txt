@@ -1,0 +1,7 @@
+Ingame theme - Ipsi by Unknown http://www.dl-sounds.com/royalty-free/ipsi/
+Game Over screen - Rise by neocrey http://www.newgrounds.com/audio/listen/647125
+
+Logan Marks - Programming - Level generation
+Chad Gerein  - Programming - Player and Pickups
+Mitch Maclean - Programming - UI and Sound implementation.
+Brodie Beaman - Programming - Sound Recording and editting.

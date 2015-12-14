@@ -247,6 +247,7 @@ public class LevelGenerator : MonoBehaviour {
 		foreach (GameObject preCon in preConList) {
 			if (preCon != null) {
 				preCon.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -playerSpeed);
+				preCon.GetComponent<PreConScript> ().UpdateProjectileSpeeds (-playerSpeed);
 			}
 		}
 	}

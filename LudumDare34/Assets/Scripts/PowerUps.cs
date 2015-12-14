@@ -14,7 +14,7 @@ public class PowerUps : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < beginningYPosition - 25f) {
+		if (transform.position.y < -25f) {
 			if (transform.parent != null) {
 				LevelGenerator levelGen = transform.parent.GetComponent<LevelGenerator> ();
 				if (levelGen != null) {

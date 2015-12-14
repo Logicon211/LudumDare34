@@ -23,4 +23,13 @@ public class PreConScript : MonoBehaviour {
 			}
 		}
 	}
+
+	public void UpdateProjectileSpeeds(float speed) {
+		//Loop through each child
+		foreach (Transform child in transform) {
+			if (child.tag == "Turret") {
+				child.GetComponent<TurretScript> ().updateShotSpeed (speed);
+			}
+		}
+	}
 }
