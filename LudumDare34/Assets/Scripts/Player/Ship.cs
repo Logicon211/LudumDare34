@@ -62,6 +62,8 @@ public class Ship : MonoBehaviour {
 		}
 	}
 
+
+	//Changes the size of the ship
 	public void changeSize()
 	{
 		if (garbage == 0)
@@ -88,11 +90,13 @@ public class Ship : MonoBehaviour {
 		}
 	}
 
+	//Add to the garbage int 
 	public void addGarbage(int i)
 	{
 		garbage += i;
 	}
 
+	//Subtract from the amount of garbage on the shipp
 	public void loseGarbage(int i)
 	{
 		garbage -= i;
@@ -100,17 +104,7 @@ public class Ship : MonoBehaviour {
 			garbage = 0;
 	}
 
-	public int getAbility()
-	{
-		return currentAbility;
-	}
-
-	public void setAbility(int id)
-	{
-		currentAbility = id;
-		Debug.Log(id);
-	}
-
+	//Returns the amount of ammo currently on ship
 	public int getAmmo()
 	{
 		return ammo;
@@ -122,6 +116,7 @@ public class Ship : MonoBehaviour {
 		convIn.PowerupPickup (i);
 	}
 
+	//Give the ship i amount of ammo (Max 3)
 	public void setAmmo(int i)
 	{
 		ammo += i;
@@ -142,6 +137,7 @@ public class Ship : MonoBehaviour {
 		}
 	}
 
+	//Gain a shield
 	public void setShield()
 	{
 		if (!isShielded) {
@@ -151,12 +147,14 @@ public class Ship : MonoBehaviour {
 		}
 	}
 
+	//Lose the shield 
 	public void loseShield()
 	{
 		isShielded = false;
 		shieldSprite.enabled = false;
 	}
 
+	//Sets the boost and invincibility
 	public void setInvincible()
 	{
 		boostoIn.Stop ();
@@ -168,6 +166,7 @@ public class Ship : MonoBehaviour {
 
 	}
 
+	//Take a hit for the team
 	public void takeHit()
 	{
 		if (isShielded)

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//In charge of controlling the bullets
+//Mitch named this class
 public class Shoot : MonoBehaviour {
 
 	// Use this for initialization

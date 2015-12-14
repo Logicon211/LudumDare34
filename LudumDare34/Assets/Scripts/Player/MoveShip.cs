@@ -3,6 +3,7 @@ using System.Collections;
 
 //Class for controlling the ship
 //Also contains the dual button action
+//This should be named ShipController but hey, ship happens
 public class MoveShip : MonoBehaviour {
 
 	public float currentSpeed = 5;
@@ -48,7 +49,8 @@ public class MoveShip : MonoBehaviour {
 		}
 	}
 
-
+	//Move the ship to the left, 
+	//Magnets will affect the movement
 	public void moveLeft() 
 	{	
 		if (magnetOnLeft) {
@@ -60,6 +62,8 @@ public class MoveShip : MonoBehaviour {
 		}
 	}
 
+	//Move the ship to the right
+	//Magnets will affect the movement
 	public void moveRight()
 	{
 		if (magnetOnLeft) {
@@ -71,10 +75,19 @@ public class MoveShip : MonoBehaviour {
 		}
 	}
 
+	//This will use any ability that's on the ship
+	//The only ability that this can use is lasers
 	public void useAbility()
 	{
 		
 		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		if (magnetOnLeft) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-magnetSpeed, 0);
+		} else if (magnetOnRight) {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (magnetSpeed, 0);
+		} else {
+			transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		}
 		if (ship.getAmmo() > 0 && shootTimer < 0f)
 		{
 			audioIn.Stop ();
