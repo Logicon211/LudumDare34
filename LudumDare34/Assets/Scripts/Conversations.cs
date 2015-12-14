@@ -23,12 +23,16 @@ public class Conversations : MonoBehaviour {
 	public AudioClip lazersPoweredOn;	//CHAD
 	public AudioClip jesusCraigKeepItTogether;	//BRODIE
 	public AudioClip goodLuckOutThereSoldier;	//CHAD
-
+	public AudioClip youreAlmostToTheCOre;
+	public AudioClip craigDontHangUpOnMe;
+	public AudioClip followYourHeart;
 
 	public AudioClip powerupPickupSound;
 	public AudioSource powerUpSource;
 	public AudioSource doorSource;
 	public AudioClip doorSound;
+
+	private int chosen_face;
 
 	//the timer is a counter we will use to determine when to show the next conversation
 	int timer;
@@ -40,6 +44,7 @@ public class Conversations : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		doorSource.volume = 0.35f;
 		powerUpSource.volume = 0.35f;
+		chosen_face = 4;
 	}
 
 	void FixedUpdate(){
@@ -110,8 +115,18 @@ public class Conversations : MonoBehaviour {
 
 	void Conversation(){
 		//pick a face at random and one of their phrases.
-		int chosen_face = Random.Range (0, 4); 
-		//chosen_face = 0;
+		int previous_face = chosen_face;
+		Debug.Log("Previous face: " + previous_face);
+
+		chosen_face = Random.Range (0, 3);
+		Debug.Log("chosen face: " + chosen_face);
+
+		while (chosen_face == previous_face) {
+			chosen_face = Random.Range (0, 4); 
+
+			Debug.Log("chosen face (loop): " + chosen_face);
+		}
+
 		FacePrep ();
 
 		if (chosen_face == 0) {
@@ -126,23 +141,18 @@ public class Conversations : MonoBehaviour {
 				AUDI.Stop ();
 				AUDI.clip = INeverLose; 
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
 			}
 
 			else if(line_picker == 1){
-				//Say line and loop till line is finished, then
 				AUDI.Stop ();
 				AUDI.clip = youllNeverMakeit; 
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
 			}
 
 			else {
-				//Say line and loop till line is finished, then
 				AUDI.Stop ();
 				AUDI.clip = takeOutTheTrash;
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
 			}
 
 			Invoke("FaceEnd", 2);
@@ -152,35 +162,25 @@ public class Conversations : MonoBehaviour {
 		else if (chosen_face == 1) {
 			//Do face 2
 			spriteRenderer.sprite = sprite3;
-			//Chose a line to say
 
-
-			int line_picker = Random.Range (0, 2);
+			int line_picker = Random.Range (0, 3);
 
 			if(line_picker == 0){
 				AUDI.Stop ();
 				AUDI.clip = hesAMadMan; 
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
-
 			}
 
 			else if(line_picker == 1){
-				//Say line and loop till line is finished, then
 				AUDI.Stop ();
 				AUDI.clip = jesusCraigKeepItTogether;
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
-
 			}//End of face 2
 
 			else{
-				//Say line and loop till line is finished, then
 				AUDI.Stop ();
-				//AUDI.clip = jesusCraigKeepItTogether; WIll become follow your heart
+				AUDI.clip = followYourHeart;
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
-
 			}//End of face 2
 
 			Invoke("FaceEnd", 2);
@@ -189,34 +189,30 @@ public class Conversations : MonoBehaviour {
 		else {
 			//Do face 3
 			spriteRenderer.sprite = sprite5;
-			//Chose a line to say
 
-			float line_picker;
-			line_picker = 1.5f; //Random.Range (0, 2);
+			int line_picker = Random.Range (0, 3);
 
 			if(line_picker < 1){
 				AUDI.Stop ();
-				//AUDI.clip = goFastCraig; WILL BECOME "CRAIGdonthanguponme" 
+				AUDI.clip = craigDontHangUpOnMe;
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
-
 			}
 
 			else if(line_picker < 2){
-				//Say line and loop till line is finished, then
 				AUDI.Stop ();
 				AUDI.clip = timeToTakeOutTrash;
 				AUDI.Play ();
-				//Say line and loop till line is finished, then
+			}
 
+			else{
+				AUDI.Stop ();
+				AUDI.clip = youreAlmostToTheCOre;
+				AUDI.Play ();
 			}//End of face 4
 
 			Invoke("FaceEnd", 2);
 		}
-
-	//	else if (chosen_face < 4) {
-			//Do face 4
-	//	}
+			
 
 		}
 
