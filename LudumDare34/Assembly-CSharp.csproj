@@ -38,16 +38,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Door_Behaviour.cs" />
      <Compile Include="Assets\INTRO\IntroSpriteFlow.cs" />
-     <Compile Include="Assets\INTRO\Score_Script.cs" />
      <Compile Include="Assets\PreConScript.cs" />
      <Compile Include="Assets\Scripts\Abilities\Garbage.cs" />
      <Compile Include="Assets\Scripts\Abilities\Invincible.cs" />
@@ -55,6 +54,7 @@
      <Compile Include="Assets\Scripts\Abilities\Shield.cs" />
      <Compile Include="Assets\Scripts\BackgroundScript.cs" />
      <Compile Include="Assets\Scripts\Conversations.cs" />
+     <Compile Include="Assets\Scripts\DisplayScore.cs" />
      <Compile Include="Assets\Scripts\IDestroyable.cs" />
      <Compile Include="Assets\Scripts\IEnemy.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
@@ -65,6 +65,8 @@
      <Compile Include="Assets\Scripts\Player\Shoot.cs" />
      <Compile Include="Assets\Scripts\PowerUps.cs" />
      <Compile Include="Assets\Scripts\SceneFadeInOut.cs" />
+     <Compile Include="Assets\Scripts\ScoreManager.cs" />
+     <Compile Include="Assets\Scripts\Score_Script.cs" />
      <Compile Include="Assets\Scripts\TerrainScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectScripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\TestProjectScripts\LoadLevel.cs" />
@@ -84,10 +86,10 @@
      <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
      <None Include="Assets\Fonts\PressStart2P-Regular\OFL.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

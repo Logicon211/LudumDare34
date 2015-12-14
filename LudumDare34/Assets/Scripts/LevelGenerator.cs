@@ -115,7 +115,7 @@ public class LevelGenerator : MonoBehaviour {
 		bool notBlockedByPreCon = checkPreConBoundries ();
 
 		if (!notBlockedByPreCon) {
-			Debug.Log ("PRECON BLOCKING");
+			//Debug.Log ("PRECON BLOCKING");
 		}
 
 		if (spawnPreConNext) {
@@ -144,7 +144,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Keep left and right walls setup
-		if ((lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty)) && notBlockedByPreCon) {
+		if ((lastEnemySpawned == null  || (lastEnemySpawned.transform.position.y <= ySpawnOffset - (enemySpawnDistance/difficulty))) && notBlockedByPreCon) {
 			SpawnEnemies();
 		}
 	}
