@@ -26,6 +26,7 @@ public class Ship : MonoBehaviour {
 	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_X_VALUE = 1f;
 	const float DEFAULT_DIRTY_SHIP_SIZE_BECAUSE_MITCH_FUCKED_UP_AND_NOT_ME_Y_VALUE = 1f;
 	public bool isDead = false;
+	public GameObject HYYYYPADRIIIIIIIIIIIIIIIIVE;
 
 	SpriteRenderer shieldSprite;
 	SpriteRenderer thisSprite;
@@ -45,10 +46,12 @@ public class Ship : MonoBehaviour {
 		changeSize();
 		if (isInvincible)
 		{
+			HYYYYPADRIIIIIIIIIIIIIIIIVE.SetActive(true);
 			levelGen.UpdateSpeed(10f);
 			invincibleTime -= Time.deltaTime;
 			if (invincibleTime <= 0f)
 			{
+				HYYYYPADRIIIIIIIIIIIIIIIIVE.SetActive(false);
 				isInvincible = false;
 				levelGen.UpdateSpeed (5f);
 			}
