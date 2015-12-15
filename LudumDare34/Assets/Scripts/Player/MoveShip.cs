@@ -140,7 +140,7 @@ public class MoveShip : MonoBehaviour {
 				Instantiate (laserBullet, transform.position, Quaternion.identity);
 				ship.setAmmo (-1);
 				shootTimer = .5f;
-			} else {
+			} else if (ship.getGarbage() == 0) {
 				audioIn.Stop ();
 				audioIn.clip = clickSound;
 				audioIn.Play ();
