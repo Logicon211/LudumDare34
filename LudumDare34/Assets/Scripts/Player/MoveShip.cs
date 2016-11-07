@@ -40,6 +40,19 @@ public class MoveShip : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		bool leftTouch = false;
+		bool rightTouch = false;
+
+		foreach (Touch touch in Input.touches) {
+			if (touch.position.x < Screen.width/2) {
+				leftTouch = true;
+			}
+			else if (touch.position.x > Screen.width/2) {
+				rightTouch = true;
+			} 
+		}
+
 		if (shootTimer > 0f) {
 			shootTimer -= Time.deltaTime;
 		}
@@ -50,18 +63,18 @@ public class MoveShip : MonoBehaviour {
 			garbageParticles.SetActive (false);
 			garbageRustler.Stop ();
 		}
-		if ( Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
+		if ((Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow)) || (leftTouch && rightTouch))
 		{
 			isHeldDown = true;
 			useAbility();
 		}
-		else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+		else if ((Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) || (leftTouch && !rightTouch))
 		{
 			garbageTimer = GARBAGE_DEFAULT;
 			isHeldDown = false;
 			moveLeft();
 		}
-		else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+		else if ((Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)) || (!leftTouch && rightTouch))
 		{
 			garbageTimer = GARBAGE_DEFAULT;
 			isHeldDown = false;
@@ -78,6 +91,8 @@ public class MoveShip : MonoBehaviour {
 				transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			}
 		}
+
+
 	}
 
 	//Move the ship to the left, 

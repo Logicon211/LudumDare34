@@ -15,6 +15,8 @@ public class IntroSpriteFlow : MonoBehaviour
 
 	void Start ()
 	{
+		Screen.SetResolution (1400, 900, true);
+
 		spriteRenderer = GetComponent<SpriteRenderer>(); // we are accessing the SpriteRenderer that is attached to the Gameobject
 	}
 
@@ -27,6 +29,10 @@ public class IntroSpriteFlow : MonoBehaviour
 	
 	void Update ()
 	{
+		foreach (Touch touch in Input.touches) {
+			sceneEnding++;
+		}
+
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
 			if(sceneEnding < sprite.Length){
 				sceneEnding++;

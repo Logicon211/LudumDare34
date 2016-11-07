@@ -1,18 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\INTRO\IntroSpriteFlow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TerrainScript.cs">
     <Files>
+      <File FileName="Assets\Scripts\Player\Shoot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LevelGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Ship.cs" Line="77" Column="33" />
-      <File FileName="Assets\Scripts\Player\MoveShip.cs" Line="52" Column="40" />
+      <File FileName="Assets\Scripts\Player\Ship.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\MoveShip.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Conversations.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Abilities\Garbage.cs" Line="24" Column="3" />
-      <File FileName="Assets\Scripts\PowerUps.cs" Line="34" Column="16" />
-      <File FileName="Assets\Scripts\DisplayScore.cs" Line="21" Column="46" />
+      <File FileName="Assets\Scripts\Abilities\Garbage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PowerUps.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DisplayScore.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Abilities\Lasers.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Score_Script.cs" Line="21" Column="2" />
-      <File FileName="Assets\Scripts\TerrainScript.cs" Line="54" Column="58" />
+      <File FileName="Assets\Scripts\Score_Script.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TerrainScript.cs" Line="32" Column="2" />
       <File FileName="Assets\INTRO\IntroSpriteFlow.cs" Line="32" Column="19" />
+      <File FileName="Assets\Scripts\WallScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

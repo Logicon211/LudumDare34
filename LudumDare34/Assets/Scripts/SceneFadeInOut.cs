@@ -19,6 +19,10 @@ public class SceneFadeInOut : MonoBehaviour
 	
 	void Update ()
 	{
+		foreach (Touch touch in Input.touches) {
+			sceneEnding = true;
+		}
+
 		if (Input.anyKey) {
 			sceneEnding = true;
 			//Application.LoadLevel();
