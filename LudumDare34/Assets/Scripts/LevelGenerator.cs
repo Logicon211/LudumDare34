@@ -257,6 +257,6 @@ public class LevelGenerator : MonoBehaviour {
 
 	//returns true if not blocked by precon
 	private bool checkPreConBoundries() {
-		return (lastPreConSpawned == null || lastPreConSpawned.transform.FindChild ("TopOfPreCon").transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty));
+		return (lastPreConSpawned == null || lastPreConSpawned.transform.Find ("TopOfPreCon").transform.position.y <= ySpawnOffset - (blockSpawnDistance/difficulty));
 	}
 }

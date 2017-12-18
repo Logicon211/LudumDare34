@@ -6,7 +6,7 @@ public class PreConScript : MonoBehaviour {
 	private float beginningYPosition;
 	// Use this for initialization
 	void Start () {
-		Transform top = transform.FindChild ("TopOfPreCon");
+		Transform top = transform.Find ("TopOfPreCon");
 		if (top != null) {
 			beginningYPosition = top.position.y;	
 		} else {

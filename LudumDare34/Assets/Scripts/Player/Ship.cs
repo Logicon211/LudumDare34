@@ -39,7 +39,7 @@ public class Ship : MonoBehaviour {
 	void Start () {
 		ammo = 0;
 		levelGen = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>();
-		shieldSprite = transform.FindChild("ShieldContainer").GetComponent<SpriteRenderer>();
+		shieldSprite = transform.Find("ShieldContainer").GetComponent<SpriteRenderer>();
 		ammoRenderer = spriteIn.GetComponent<SpriteRenderer>();
 		thisSprite = gameObject.GetComponent<SpriteRenderer>();
 		boostoIn.volume = 0.35f;
@@ -181,7 +181,7 @@ public class Ship : MonoBehaviour {
 				isDead = true;
 				transform.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 				transform.gameObject.GetComponent<PolygonCollider2D> ().enabled = false;
-				Object.Destroy (transform.FindChild ("BetterParticles").gameObject);
+				Object.Destroy (transform.Find ("BetterParticles").gameObject);
 			}
 		}
 	}
